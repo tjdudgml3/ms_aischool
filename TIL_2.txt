@@ -1,0 +1,82 @@
+html, css
+
+유저       -      서버
+유저가 요청, 서버가 응답(html,json)
+
+html 뼈대
+css 디자인
+javascript 사용자와 인터랙션
+
+html 문법
+요소 컨텐츠 태그
+a href(앵커) 클릭하면 해당 url로 이동
+
+시맨티 요소들
+body
+  헤더
+    네비
+        리스트
+  메인(중요한요소)
+    div(구역)
+      h1
+      p
+      a href
+    div
+      h1
+      p
+      a href
+----> 페이지의 구조, 먼저 시멘티요소들을 사용하여 구조적인 페이지를 만들 수 있음
+
+css문법
+HTML에 적용시키는 방법 3가지
+1)style 태그 안에 집어넣는다
+2)요소안에 값을 넣는다. <p style = "color : red;">빨간색 </p>
+3)css파일을 따로 만들어서 lnk해줌  >>>>> <link rel = "stylesheet" href = "styles.css">
+
+cascading 부모요소를 꾸며주면 안쪽 자식까지 적용
+
+p{
+  color : red;
+}
+선택자의 속성을 값만큼 변경
+
+<head>안에<style> 삽입하고 위의 방식대로 변경
+class와 id이용 
+id는 파일에서 유일함
+문장의 끝에 ; 필수
+
+css우선순위
+요소의 스타일속성> 아이디> 클래스 > 요소
+
+폰트 설정
+font-family 폰트바꾸기
+font-size 폰트 크키 px(모니터의 최소 단위) %(부모의 비율)
+font-weight 폰트 굵기 700: bold
+폰트는 사용자 컴퓨터 안에 설치되어있어야 동작을 해서 서비스이용자가 폰트를 못볼 수 있다 -> 웹폰트 사용-> google fonts 
+웹폰트 사용법
+url import -> style 안에 @import url(http~)
+link rel = "" href ~
+
+좋은 css HTML: 얼마나 코드가 작냐, 수정할 때 얼마나 적게 수정해서 원하는 결과물을 얻을 수 있나.
+
+
+박스모델
+브라우저는 요소를 박스 모델로 기억을한다.
+margin border padding contents
+
+padding = 10px;
+
+border = 1px solid black
+
+margin은 padding과 동일
+magin = 10px
+magin =2px 5px 6px 8px 
+       상  우  하   좌
+margin = 10px 20px
+        상하  좌우
+        
+요소의 크기
+가로: border + padding + width
+세로: border + padding + height
+
+    
