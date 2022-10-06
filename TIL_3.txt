@@ -1,0 +1,35 @@
+CSS layout
+
+요소를 정상적인 배치흐름에서 벗어나게하는것
+
+인라인요소 = 대표적으로 a href
+블라요소 대표적으로 p
+
+float - 둥둥떠나니게하기, img에 적용시키면 텍스트 사이에 들어갈게 함'
+
+overflow : hidden,scroll(부모요소)
+clear: both (footer->float요소 다음것)
+float을 쓸 때에는 overflow, clear를 써주는게 좋다
+
+position - 요소의 배치기준을 지정하는 속성
+absolute , static, relative, fixed
+top,left,right,bottom
+요소가 기준에서 얼만큼 떨어질지 지정하는 속성
+
+반응형 웹 
+media query 사용 
+width의 값을  %로 표현하기 -->픽셀 값을 쓰면 반응형웹을 구현하기 까다로움
+width = 100% -> 페이지의 전체값
+@media (max-width:800px){
+  div{
+  background-color = red; #width가 800 픽셀 이하일때 -->브라우저 크기가 800픽셀 이하일때 min(이상일때)
+  }
+}
+meta name ="viewport" ---> 브라우저를 체크 : 비쥬얼 코드에선 자동으로 작성됨
+viewportsizer.com/devices
+boxing-size = border-box; 컨텐츠기준이 아닌 박스기준 ---> border포함한 사이즈로 요소사이즈지정
+
+bootstrap
+반응형 웹페이지를 빠르게 만들 수 있는 프레임워크, 트위터에서 개발
+웹사이트의 칸 = 12개 if 4개를 만들고싶으면 가로의 칸은 3 col-md-3
+
