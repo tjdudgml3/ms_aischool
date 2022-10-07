@@ -1,0 +1,40 @@
+JAVASCRIPT
+
+let num = 10 //C와 마찬가지로 메모리를 할당할때에 예약어를 사용함'
+console.log(num) -> print
+let a = '1'+ 10 --->110
+배열.push() --> append()
+
+객체 python dic이랑 비슷하다
+let person = {'name':'park','age':15,'city':'seoul'}
+{}로 표시 dictionary와 사용방법은 동일
+
+데이터 유형에 따라 연산 기능이 바뀐다.
+실무에서 쓰는 객체
+people[0] = {'name' : 'lee', 'age' : 15}
+배열 안에 객체를 넣는다.
+
+function test(){//function = def
+  내용
+  return;
+}
+
+조건문
+and = &&
+or = ||
+
+html에서 js를 사용한다
+<script></script>
+<script src = "1.js"></script>
+let h1Elements = documents.getElementsByTagName('h1')
+console.log(h1Elements[0])
+let pElements = documents.getElementsByClassName('test')
+console.log(getComputedStyle(pElements).color
+색깔바꾸기
+let h5Elements = document.getElementsByTagName('h5')
+let result = h5Elements[0].innerText + h5Elements[1].innerText
+h5Elements[1].innerText = result 
+innertext를 바꾸기 여기서 <h1></h1> 이런식으로 안의 css도 변경 가능하다.
+
+innertext 값은 문자열로 받아오기때문에 정수형을 사용할 땐 parseInt() 함수를 쓴다 python int()랑 동일하다.
+
