@@ -1,0 +1,36 @@
+Javascript
+
+Jquery란?
+자바스크립트 라이브러리
+javacript로  웹페이지 html요소를 다루기 까다롭다. 그래서 Jquery사용
+document.getElementByID('element.style.display = 'none' ---------> $('#element').hide()
+브라우저에 대해 신경 안써도 된다.
+$('선택자')
+let $h1ele = $('h1');
+let $child = $('div > p')
+jquery 에서는 child[0]~[n](받아온 html)이라는 표현 자제, 이건 javascript문법
+javascript 배열에 원소 추가- push()
+jquery 요소추가- append()
+let h1 = $('.parent')children('h1') - 자식찾기 자손찾기: find()
+let parent = $('h1').parent() -부모찾기 ---> jquery의 장점
+
+animation 추가 - 처음 Display:None으로 해줌으로 한다. 크기조정은 상관없다. 
+
+Jquery에서 객체란 무엇이나 ---> 인터넷자료
+문서 객체 모델(Document Object Model, DOM) --->호환성이 좋다. 
+$감싸지면 contents가 같더라도 다른객체로 인식한다.그럴때에는 get()함수를 사용한다.
+
+attr 요소들의 속성을 추가,변경할수있는 기능
+class설정하기 1. addClass()
+             2. removeClass()
+appendTo 부모가 오른쪽, append 부모가 왼쪽
+prepend 앞쪽에 append
+
+Event 처리. 
+click(),mouseenter(),mouseleave()...
+focus() - input()처럼 값을 입력할때 깜빡깜빡하는 event
+$('p').on('click',fun(){event1}, 'click',fun(){event2} )
+on을 써도 되지만 함수명을 이벤트함수로 하는것이 좀더 직관적이다. 
+on - 동적으로 사용할때 사용한다.
+trigger() 이벤트 트리거
+
