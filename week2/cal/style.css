@@ -1,0 +1,25 @@
+#cal{
+    width : 400px;
+    height : 500px;
+    border : 1px solid lightseagreen;
+}
+.screen{
+    width: 400px;
+    height: 100px;
+    background-color: lavenderblush;
+    border-bottom: 1px solid lightseagreen;
+}
+.buttons{
+    margin: 10px;
+}
+button {
+    width: 90px;
+    height: 90px;
+    padding:10px;
+}
+.num{
+    background-color: lightblue;
+}
+.op{
+    background-color: burlywood;
+}
