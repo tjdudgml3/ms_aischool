@@ -1,0 +1,11 @@
+azure에 있는 서비스 사용하기.
+
+computervision 의 객체인식.
+얼굴 인식 
+
+Class,library,package 대문자 관례
+지역변수, 파라메타 소문자로 관례
+addr,msg 줄임말은 배제
+두단어가 합쳐지면 두번째 단어는 대문자
+상수는 전체가 대문자 const MAX_USER = 100
+
