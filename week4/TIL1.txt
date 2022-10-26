@@ -1,0 +1,21 @@
+1.overloading  ->다형성 
+add(a,b): a+ b 
+세개를 바꾸고 싶으면?
+add(a,b,c) : a+b+c 
+
+-----> 매개변수가 다르기때문에 언어안에서 다르게 해석 --> 다형성
+
+
+2.overriding  ->다형성
+
+상위 클래스에서 상속을 받았음. -> 원하는 기능을 더 추가하고싶으면
+상위 클래스 메쏘드를 가져와서 같은이름으로 재정의
+
+class parent()
+    def operation(a,b): a+b
+
+class child(parent):
+    def operation(a,b) : a*b
+
+3.추상화 ->virtual 함수
+

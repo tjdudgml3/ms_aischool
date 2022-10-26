@@ -1,0 +1,78 @@
+클래식 머신러닝 - scikit learn 
+input 과 output을 이용해 fx를 예측함
+MLOPS 머신러닝 엔지니어 관점으로본것.
+
+supervised learning - 지도학습 
+문제와 정답을 제공해줌 ( feature 와 label 제공 )
+classification - 분류
+고양이 개 분류
+regression 회귀
+키에따른 신발사이즈
+
+unsupervised learning (문제(feature)만 제공)
+---> 패턴이나 구조를 발견
+지도학습에 비해 정확도가 떨어짐
+변칙검색 - anomaly를 감지해냄
+clustering - 군집
+
+semi - supervised learning
+몇개의 데이터, 데이터의 특징을 나타내는 데이터만 labeling을함 -> 최소한의 노동력
+
+reinforcement learning - 강화학습
+보상을 주며 학습 -> 게임(스타크래프트2)
+
+y = wx + b
+w = 가중치
+b = 편향치
+
+yhat = y_pred
+yhat - y = error
+
+dataset = trainset + testset + validationset
+-> 랜덤 split을 사용 -> 시드값을 주고 조정함.
+
+orange data mining
+
+
+
+-----------------------------------------------------------------
+회귀 분석 regression analysis
+활용분야 - 가설적시험, 인과관계, 시간에 따라 변화하는 데이터 혹은 영향도
+
+regression 실습 - 보스턴 집값데이터, housing
+13개의 feature 506 instance
+
+regression 평가
+1) MAE mean absolute error 전체 오류를 합쳐서 평균을 냄
+부호를 신경안쓰네?
+데이터가 너무 작으면 눈에 안보인다.
+2)MSE 오차의 제곱의 평균
+3)RMSE MSE의 루트
+4)R2 
+ 
+
+CUDA - NVIDIA 가 만든 GPU를 사용할수있게하는 기반. 원래는 게임 -> 머신러닝
+
+cross validation - folds : 데이터를 몇등분할거냐 5folds -> 5등분을 한다.
+첫 폴드에 대해서 검증하고, 나머지 4개로 학습
+두번째 블럭으로 테스트, 나머지 블럭으로 학습 until 총 폴드의 수만큼 반복을한다.
+다 합쳐서 결과를 낸다. ->데이터 양이 작을때 사용함-> underfitting 방지. why? 시간이 오래걸린다
+but  good points : 모든 데이터셋이 트레인과 테스트셋에 다 사용.
+
+random sampling - trainset 과 testset 을 일정비율로 split 
+
+leave one out - cross validation에서 데이터가 한개한개 다돌림 folds = len(dataset)
+
+------------------------------------------------------------------
+
+classification
+iris 꽃데이터 실습.
+
+
+kNN k nearest neighbour algo
+k 의 값에 따라 더 많은 label 에 따라 label 예측
+유클리디안 - 직선거리 점과점의 거리
+맨하탄 - x,y값의 차.
+
+
+딥러닝
