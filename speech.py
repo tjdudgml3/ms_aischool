@@ -8,7 +8,7 @@ import azure.cognitiveservices.speech as speechsdk
 # Creates an instance of a speech config with specified subscription key and service region.
 # Replace with your own subscription key and service region (e.g., "westus").
 speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
-speech_config = speechsdk.SpeechConfig(subscription='03c67527a4004be48bf47832b776ee8b', region='koreacentral', speech_recognition_language= 'ko-kr')
+speech_config = speechsdk.SpeechConfig(speech_key ='', region='koreacentral', speech_recognition_language= 'ko-kr')
 
 # Creates a recognizer with the given settings
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
