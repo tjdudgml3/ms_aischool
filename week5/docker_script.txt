@@ -1,0 +1,2386 @@
+tjdudgml3@labuser71ubuntu:~$ docker pull --help
+
+Usage:  docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+
+Pull an image or a repository from a registry
+
+Options:
+  -a, --all-tags                Download all tagged images in the repository
+      --disable-content-trust   Skip image verification (default true)
+      --platform string         Set platform if server is multi-platform capable
+  -q, --quiet                   Suppress verbose output
+tjdudgml3@labuser71ubuntu:~$ docker pull ubuntu:18.04
+18.04: Pulling from library/ubuntu
+a404e5416296: Pull complete
+Digest: sha256:ca70a834041dd1bf16cc38dfcd24f0888ec4fa431e09f3344f354cf8d1724499
+Status: Downloaded newer image for ubuntu:18.04
+docker.io/library/ubuntu:18.04
+tjdudgml3@labuser71ubuntu:~$ ls
+tjdudgml3@labuser71ubuntu:~$ ps
+    PID TTY          TIME CMD
+  10573 pts/2    00:00:00 bash
+  12459 pts/2    00:00:00 ps
+tjdudgml3@labuser71ubuntu:~$ ps -al
+F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 R  1000   12460   10573  0  80   0 -  2615 -      pts/2    00:00:00 ps
+tjdudgml3@labuser71ubuntu:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+tjdudgml3@labuser71ubuntu:~$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+ubuntu        18.04     71eaf13299f4   9 days ago      63.1MB
+hello-world   latest    feb5d9fea6a5   13 months ago   13.3kB
+tjdudgml3@labuser71ubuntu:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+tjdudgml3@labuser71ubuntu:~$ docker ps -al
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+450189f7e76f   hello-world   "/hello"   47 minutes ago   Exited (0) 47 minutes ago             mystifying_buck
+tjdudgml3@labuser71ubuntu:~$ docker run --help
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run a command in a new container
+
+Options:
+      --add-host list                  Add a custom host-to-IP mapping (host:ip)
+  -a, --attach list                    Attach to STDIN, STDOUT or STDERR
+      --blkio-weight uint16            Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+      --blkio-weight-device list       Block IO weight (relative device weight) (default [])
+      --cap-add list                   Add Linux capabilities
+      --cap-drop list                  Drop Linux capabilities
+      --cgroup-parent string           Optional parent cgroup for the container
+      --cgroupns string                Cgroup namespace to use (host|private)
+                                       'host':    Run the container in the Docker host's cgroup namespace
+                                       'private': Run the container in its own private cgroup namespace
+                                       '':        Use the cgroup namespace as configured by the
+                                                  default-cgroupns-mode option on the daemon (default)
+      --cidfile string                 Write the container ID to the file
+      --cpu-period int                 Limit CPU CFS (Completely Fair Scheduler) period
+      --cpu-quota int                  Limit CPU CFS (Completely Fair Scheduler) quota
+      --cpu-rt-period int              Limit CPU real-time period in microseconds
+      --cpu-rt-runtime int             Limit CPU real-time runtime in microseconds
+  -c, --cpu-shares int                 CPU shares (relative weight)
+      --cpus decimal                   Number of CPUs
+      --cpuset-cpus string             CPUs in which to allow execution (0-3, 0,1)
+      --cpuset-mems string             MEMs in which to allow execution (0-3, 0,1)
+  -d, --detach                         Run container in background and print container ID
+      --detach-keys string             Override the key sequence for detaching a container
+      --device list                    Add a host device to the container
+      --device-cgroup-rule list        Add a rule to the cgroup allowed devices list
+      --device-read-bps list           Limit read rate (bytes per second) from a device (default [])
+      --device-read-iops list          Limit read rate (IO per second) from a device (default [])
+      --device-write-bps list          Limit write rate (bytes per second) to a device (default [])
+      --device-write-iops list         Limit write rate (IO per second) to a device (default [])
+      --disable-content-trust          Skip image verification (default true)
+      --dns list                       Set custom DNS servers
+      --dns-option list                Set DNS options
+      --dns-search list                Set custom DNS search domains
+      --domainname string              Container NIS domain name
+      --entrypoint string              Overwrite the default ENTRYPOINT of the image
+  -e, --env list                       Set environment variables
+      --env-file list                  Read in a file of environment variables
+      --expose list                    Expose a port or a range of ports
+      --gpus gpu-request               GPU devices to add to the container ('all' to pass all GPUs)
+      --group-add list                 Add additional groups to join
+      --health-cmd string              Command to run to check health
+      --health-interval duration       Time between running the check (ms|s|m|h) (default 0s)
+      --health-retries int             Consecutive failures needed to report unhealthy
+      --health-start-period duration   Start period for the container to initialize before starting
+                                       health-retries countdown (ms|s|m|h) (default 0s)
+      --health-timeout duration        Maximum time to allow one check to run (ms|s|m|h) (default 0s)
+      --help                           Print usage
+  -h, --hostname string                Container host name
+      --init                           Run an init inside the container that forwards signals and reaps processes
+  -i, --interactive                    Keep STDIN open even if not attached
+      --ip string                      IPv4 address (e.g., 172.30.100.104)
+      --ip6 string                     IPv6 address (e.g., 2001:db8::33)
+      --ipc string                     IPC mode to use
+      --isolation string               Container isolation technology
+      --kernel-memory bytes            Kernel memory limit
+  -l, --label list                     Set meta data on a container
+      --label-file list                Read in a line delimited file of labels
+      --link list                      Add link to another container
+      --link-local-ip list             Container IPv4/IPv6 link-local addresses
+      --log-driver string              Logging driver for the container
+      --log-opt list                   Log driver options
+      --mac-address string             Container MAC address (e.g., 92:d0:c6:0a:29:33)
+  -m, --memory bytes                   Memory limit
+      --memory-reservation bytes       Memory soft limit
+      --memory-swap bytes              Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      --memory-swappiness int          Tune container memory swappiness (0 to 100) (default -1)
+      --mount mount                    Attach a filesystem mount to the container
+      --name string                    Assign a name to the container
+      --network network                Connect a container to a network
+      --network-alias list             Add network-scoped alias for the container
+      --no-healthcheck                 Disable any container-specified HEALTHCHECK
+      --oom-kill-disable               Disable OOM Killer
+      --oom-score-adj int              Tune host's OOM preferences (-1000 to 1000)
+      --pid string                     PID namespace to use
+      --pids-limit int                 Tune container pids limit (set -1 for unlimited)
+      --platform string                Set platform if server is multi-platform capable
+      --privileged                     Give extended privileges to this container
+  -p, --publish list                   Publish a container's port(s) to the host
+  -P, --publish-all                    Publish all exposed ports to random ports
+      --pull string                    Pull image before running ("always"|"missing"|"never") (default "missing")
+      --read-only                      Mount the container's root filesystem as read only
+      --restart string                 Restart policy to apply when a container exits (default "no")
+      --rm                             Automatically remove the container when it exits
+      --runtime string                 Runtime to use for this container
+      --security-opt list              Security Options
+      --shm-size bytes                 Size of /dev/shm
+      --sig-proxy                      Proxy received signals to the process (default true)
+      --stop-signal string             Signal to stop a container (default "SIGTERM")
+      --stop-timeout int               Timeout (in seconds) to stop a container
+      --storage-opt list               Storage driver options for the container
+      --sysctl map                     Sysctl options (default map[])
+      --tmpfs list                     Mount a tmpfs directory
+  -t, --tty                            Allocate a pseudo-TTY
+      --ulimit ulimit                  Ulimit options (default [])
+  -u, --user string                    Username or UID (format: <name|uid>[:<group|gid>])
+      --userns string                  User namespace to use
+      --uts string                     UTS namespace to use
+  -v, --volume list                    Bind mount a volume
+      --volume-driver string           Optional volume driver for the container
+      --volumes-from list              Mount volumes from the specified container(s)
+  -w, --workdir string                 Working directory inside the container
+tjdudgml3@labuser71ubuntu:~$ docker run -it --name demo1 ubuntu:18.04 /bin/bash
+root@68b697954ccb:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@68b697954ccb:/# cd bin
+root@68b697954ccb:/bin# ls
+bash     bzip2         dash           egrep     kill    mount          rm          sync        wdctl         zgrep
+bunzip2  bzip2recover  date           false     ln      mountpoint     rmdir       tar         which         zless
+bzcat    bzless        dd             fgrep     login   mv             run-parts   tempfile    ypdomainname  zmore
+bzcmp    bzmore        df             findmnt   ls      nisdomainname  sed         touch       zcat          znew
+bzdiff   cat           dir            grep      lsblk   pidof          sh          true        zcmp
+bzegrep  chgrp         dmesg          gunzip    mkdir   ps             sh.distrib  umount      zdiff
+bzexe    chmod         dnsdomainname  gzexe     mknod   pwd            sleep       uname       zegrep
+bzfgrep  chown         domainname     gzip      mktemp  rbash          stty        uncompress  zfgrep
+bzgrep   cp            echo           hostname  more    readlink       su          vdir        zforce
+root@68b697954ccb:/bin# cd bash
+bash: cd: bash: Not a directory
+root@68b697954ccb:/bin# exit
+exit
+tjdudgml3@labuser71ubuntu:~$ ls
+tjdudgml3@labuser71ubuntu:~$ dockerps
+dockerps: command not found
+tjdudgml3@labuser71ubuntu:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+tjdudgml3@labuser71ubuntu:~$ docker run -it --name demo2 ubuntu:18.04 /bin/bash
+root@3f84b9112c97:/# docker ps
+bash: docker: command not found
+root@3f84b9112c97:/# exit
+exit
+tjdudgml3@labuser71ubuntu:~$ docker ps -al
+CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS                       PORTS     NAMES
+3f84b9112c97   ubuntu:18.04   "/bin/bash"   18 seconds ago   Exited (127) 5 seconds ago             demo2
+tjdudgml3@labuser71ubuntu:~$ docker run -it -d --name demo2 ubuntu:18.04 /bin/bash
+docker: Error response from daemon: Conflict. The container name "/demo2" is already in use by container "3f84b9112c978c56c1f483453deabeecc626e56791ca580f281233cfaa50540e". You have to remove (or rename) that container to be able to reuse that name.
+See 'docker run --help'.
+tjdudgml3@labuser71ubuntu:~$ docker run -it -d --name demo3 ubuntu:18.04 /bin/bash
+778a4fedef8de0ec5a606926a800de9772921be9ab0ec4da00a9ffb34e08aa2a
+tjdudgml3@labuser71ubuntu:~$ docker run -d demo2
+Unable to find image 'demo2:latest' locally
+docker: Error response from daemon: pull access denied for demo2, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+tjdudgml3@labuser71ubuntu:~$ docker run -d --name demo2
+"docker run" requires at least 1 argument.
+See 'docker run --help'.
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run a command in a new container
+tjdudgml3@labuser71ubuntu:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS          PORTS     NAMES
+778a4fedef8d   ubuntu:18.04   "/bin/bash"   47 seconds ago   Up 46 seconds             demo3
+tjdudgml3@labuser71ubuntu:~$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+ubuntu        18.04     71eaf13299f4   9 days ago      63.1MB
+hello-world   latest    feb5d9fea6a5   13 months ago   13.3kB
+tjdudgml3@labuser71ubuntu:~$ docker names
+docker: 'names' is not a docker command.
+See 'docker --help'
+tjdudgml3@labuser71ubuntu:~$ docker exec -it demo3
+"docker exec" requires at least 2 arguments.
+See 'docker exec --help'.
+
+Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+Run a command in a running container
+tjdudgml3@labuser71ubuntu:~$ docker exec -it demo3 /bin/bash
+root@778a4fedef8d:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@778a4fedef8d:/# cd usr
+root@778a4fedef8d:/usr# ls
+bin  games  include  lib  local  sbin  share  src
+root@778a4fedef8d:/usr# cd games
+root@778a4fedef8d:/usr/games# ls
+root@778a4fedef8d:/usr/games# ls
+root@778a4fedef8d:/usr/games# ls -al
+total 8
+drwxr-xr-x  2 root root 4096 Apr 24  2018 .
+drwxr-xr-x 10 root root 4096 Oct 19 19:28 ..
+root@778a4fedef8d:/usr/games# exit
+exit
+tjdudgml3@labuser71ubuntu:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS     NAMES
+778a4fedef8d   ubuntu:18.04   "/bin/bash"   2 minutes ago   Up 2 minutes             demo3
+tjdudgml3@labuser71ubuntu:~$ docker logs
+"docker logs" requires exactly 1 argument.
+See 'docker logs --help'.
+
+Usage:  docker logs [OPTIONS] CONTAINER
+
+Fetch the logs of a container
+tjdudgml3@labuser71ubuntu:~$ docker logs demo3
+tjdudgml3@labuser71ubuntu:~$ ls
+tjdudgml3@labuser71ubuntu:~$ docker logs --help
+
+Usage:  docker logs [OPTIONS] CONTAINER
+
+Fetch the logs of a container
+
+Options:
+      --details        Show extra details provided to logs
+  -f, --follow         Follow log output
+      --since string   Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+  -n, --tail string    Number of lines to show from the end of the logs (default "all")
+  -t, --timestamps     Show timestamps
+      --until string   Show logs before a timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+tjdudgml3@labuser71ubuntu:~$ docker run --name demo4 -d busybox sh -c "while true;do $(echo date);sleep 1; done"
+Unable to find image 'busybox:latest' locally
+latest: Pulling from library/busybox
+22b70bddd3ac: Pull complete
+Digest: sha256:6bdd92bf5240be1b5f3bf71324f5e371fe59f0e153b27fa1f1620f78ba16963c
+Status: Downloaded newer image for busybox:latest
+cd137ef53b793c47e5aaee8005ff4f7ed9f8e4d50358f457ec1eb25058559a5d
+tjdudgml3@labuser71ubuntu:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS     NAMES
+cd137ef53b79   busybox        "sh -c 'while true;d…"   8 seconds ago   Up 7 seconds             demo4
+778a4fedef8d   ubuntu:18.04   "/bin/bash"              8 minutes ago   Up 8 minutes             demo3
+tjdudgml3@labuser71ubuntu:~$ docker logs demo4
+Thu Nov  3 02:42:11 UTC 2022
+Thu Nov  3 02:42:12 UTC 2022
+Thu Nov  3 02:42:13 UTC 2022
+Thu Nov  3 02:42:14 UTC 2022
+Thu Nov  3 02:42:15 UTC 2022
+Thu Nov  3 02:42:16 UTC 2022
+Thu Nov  3 02:42:17 UTC 2022
+Thu Nov  3 02:42:18 UTC 2022
+Thu Nov  3 02:42:19 UTC 2022
+Thu Nov  3 02:42:20 UTC 2022
+Thu Nov  3 02:42:21 UTC 2022
+Thu Nov  3 02:42:22 UTC 2022
+Thu Nov  3 02:42:23 UTC 2022
+Thu Nov  3 02:42:24 UTC 2022
+Thu Nov  3 02:42:25 UTC 2022
+Thu Nov  3 02:42:26 UTC 2022
+Thu Nov  3 02:42:27 UTC 2022
+Thu Nov  3 02:42:28 UTC 2022
+Thu Nov  3 02:42:29 UTC 2022
+Thu Nov  3 02:42:30 UTC 2022
+Thu Nov  3 02:42:31 UTC 2022
+Thu Nov  3 02:42:32 UTC 2022
+Thu Nov  3 02:42:33 UTC 2022
+Thu Nov  3 02:42:34 UTC 2022
+Thu Nov  3 02:42:35 UTC 2022
+Thu Nov  3 02:42:36 UTC 2022
+Thu Nov  3 02:42:37 UTC 2022
+Thu Nov  3 02:42:38 UTC 2022
+Thu Nov  3 02:42:39 UTC 2022
+Thu Nov  3 02:42:40 UTC 2022
+Thu Nov  3 02:42:41 UTC 2022
+Thu Nov  3 02:42:42 UTC 2022
+Thu Nov  3 02:42:43 UTC 2022
+Thu Nov  3 02:42:44 UTC 2022
+Thu Nov  3 02:42:45 UTC 2022
+Thu Nov  3 02:42:46 UTC 2022
+Thu Nov  3 02:42:47 UTC 2022
+Thu Nov  3 02:42:48 UTC 2022
+Thu Nov  3 02:42:49 UTC 2022
+Thu Nov  3 02:42:50 UTC 2022
+Thu Nov  3 02:42:51 UTC 2022
+Thu Nov  3 02:42:52 UTC 2022
+Thu Nov  3 02:42:53 UTC 2022
+Thu Nov  3 02:42:54 UTC 2022
+Thu Nov  3 02:42:55 UTC 2022
+Thu Nov  3 02:42:56 UTC 2022
+Thu Nov  3 02:42:57 UTC 2022
+Thu Nov  3 02:42:58 UTC 2022
+Thu Nov  3 02:42:59 UTC 2022
+Thu Nov  3 02:43:00 UTC 2022
+Thu Nov  3 02:43:01 UTC 2022
+Thu Nov  3 02:43:02 UTC 2022
+Thu Nov  3 02:43:03 UTC 2022
+Thu Nov  3 02:43:04 UTC 2022
+Thu Nov  3 02:43:05 UTC 2022
+Thu Nov  3 02:43:06 UTC 2022
+Thu Nov  3 02:43:07 UTC 2022
+Thu Nov  3 02:43:08 UTC 2022
+Thu Nov  3 02:43:09 UTC 2022
+Thu Nov  3 02:43:10 UTC 2022
+Thu Nov  3 02:43:11 UTC 2022
+Thu Nov  3 02:43:12 UTC 2022
+Thu Nov  3 02:43:13 UTC 2022
+Thu Nov  3 02:43:14 UTC 2022
+Thu Nov  3 02:43:15 UTC 2022
+Thu Nov  3 02:43:16 UTC 2022
+Thu Nov  3 02:43:17 UTC 2022
+Thu Nov  3 02:43:18 UTC 2022
+Thu Nov  3 02:43:19 UTC 2022
+Thu Nov  3 02:43:20 UTC 2022
+Thu Nov  3 02:43:21 UTC 2022
+Thu Nov  3 02:43:22 UTC 2022
+Thu Nov  3 02:43:23 UTC 2022
+Thu Nov  3 02:43:24 UTC 2022
+Thu Nov  3 02:43:25 UTC 2022
+Thu Nov  3 02:43:26 UTC 2022
+Thu Nov  3 02:43:27 UTC 2022
+tjdudgml3@labuser71ubuntu:~$ docker logs demo4 -f
+Thu Nov  3 02:42:11 UTC 2022
+Thu Nov  3 02:42:12 UTC 2022
+Thu Nov  3 02:42:13 UTC 2022
+Thu Nov  3 02:42:14 UTC 2022
+Thu Nov  3 02:42:15 UTC 2022
+Thu Nov  3 02:42:16 UTC 2022
+Thu Nov  3 02:42:17 UTC 2022
+Thu Nov  3 02:42:18 UTC 2022
+Thu Nov  3 02:42:19 UTC 2022
+Thu Nov  3 02:42:20 UTC 2022
+Thu Nov  3 02:42:21 UTC 2022
+Thu Nov  3 02:42:22 UTC 2022
+Thu Nov  3 02:42:23 UTC 2022
+Thu Nov  3 02:42:24 UTC 2022
+Thu Nov  3 02:42:25 UTC 2022
+Thu Nov  3 02:42:26 UTC 2022
+Thu Nov  3 02:42:27 UTC 2022
+Thu Nov  3 02:42:28 UTC 2022
+Thu Nov  3 02:42:29 UTC 2022
+Thu Nov  3 02:42:30 UTC 2022
+Thu Nov  3 02:42:31 UTC 2022
+Thu Nov  3 02:42:32 UTC 2022
+Thu Nov  3 02:42:33 UTC 2022
+Thu Nov  3 02:42:34 UTC 2022
+Thu Nov  3 02:42:35 UTC 2022
+Thu Nov  3 02:42:36 UTC 2022
+Thu Nov  3 02:42:37 UTC 2022
+Thu Nov  3 02:42:38 UTC 2022
+Thu Nov  3 02:42:39 UTC 2022
+Thu Nov  3 02:42:40 UTC 2022
+Thu Nov  3 02:42:41 UTC 2022
+Thu Nov  3 02:42:42 UTC 2022
+Thu Nov  3 02:42:43 UTC 2022
+Thu Nov  3 02:42:44 UTC 2022
+Thu Nov  3 02:42:45 UTC 2022
+Thu Nov  3 02:42:46 UTC 2022
+Thu Nov  3 02:42:47 UTC 2022
+Thu Nov  3 02:42:48 UTC 2022
+Thu Nov  3 02:42:49 UTC 2022
+Thu Nov  3 02:42:50 UTC 2022
+Thu Nov  3 02:42:51 UTC 2022
+Thu Nov  3 02:42:52 UTC 2022
+Thu Nov  3 02:42:53 UTC 2022
+Thu Nov  3 02:42:54 UTC 2022
+Thu Nov  3 02:42:55 UTC 2022
+Thu Nov  3 02:42:56 UTC 2022
+Thu Nov  3 02:42:57 UTC 2022
+Thu Nov  3 02:42:58 UTC 2022
+Thu Nov  3 02:42:59 UTC 2022
+Thu Nov  3 02:43:00 UTC 2022
+Thu Nov  3 02:43:01 UTC 2022
+Thu Nov  3 02:43:02 UTC 2022
+Thu Nov  3 02:43:03 UTC 2022
+Thu Nov  3 02:43:04 UTC 2022
+Thu Nov  3 02:43:05 UTC 2022
+Thu Nov  3 02:43:06 UTC 2022
+Thu Nov  3 02:43:07 UTC 2022
+Thu Nov  3 02:43:08 UTC 2022
+Thu Nov  3 02:43:09 UTC 2022
+Thu Nov  3 02:43:10 UTC 2022
+Thu Nov  3 02:43:11 UTC 2022
+Thu Nov  3 02:43:12 UTC 2022
+Thu Nov  3 02:43:13 UTC 2022
+Thu Nov  3 02:43:14 UTC 2022
+Thu Nov  3 02:43:15 UTC 2022
+Thu Nov  3 02:43:16 UTC 2022
+Thu Nov  3 02:43:17 UTC 2022
+Thu Nov  3 02:43:18 UTC 2022
+Thu Nov  3 02:43:19 UTC 2022
+Thu Nov  3 02:43:20 UTC 2022
+Thu Nov  3 02:43:21 UTC 2022
+Thu Nov  3 02:43:22 UTC 2022
+Thu Nov  3 02:43:23 UTC 2022
+Thu Nov  3 02:43:24 UTC 2022
+Thu Nov  3 02:43:25 UTC 2022
+Thu Nov  3 02:43:26 UTC 2022
+Thu Nov  3 02:43:27 UTC 2022
+Thu Nov  3 02:43:28 UTC 2022
+Thu Nov  3 02:43:29 UTC 2022
+Thu Nov  3 02:43:30 UTC 2022
+Thu Nov  3 02:43:31 UTC 2022
+Thu Nov  3 02:43:32 UTC 2022
+Thu Nov  3 02:43:33 UTC 2022
+Thu Nov  3 02:43:34 UTC 2022
+Thu Nov  3 02:43:35 UTC 2022
+Thu Nov  3 02:43:36 UTC 2022
+Thu Nov  3 02:43:37 UTC 2022
+Thu Nov  3 02:43:38 UTC 2022
+Thu Nov  3 02:43:39 UTC 2022
+Thu Nov  3 02:43:40 UTC 2022
+Thu Nov  3 02:43:41 UTC 2022
+Thu Nov  3 02:43:42 UTC 2022
+Thu Nov  3 02:43:43 UTC 2022
+Thu Nov  3 02:43:44 UTC 2022
+Thu Nov  3 02:43:45 UTC 2022
+Thu Nov  3 02:43:46 UTC 2022
+Thu Nov  3 02:43:47 UTC 2022
+Thu Nov  3 02:43:48 UTC 2022
+Thu Nov  3 02:43:49 UTC 2022
+Thu Nov  3 02:43:50 UTC 2022
+Thu Nov  3 02:43:51 UTC 2022
+Thu Nov  3 02:43:52 UTC 2022
+Thu Nov  3 02:43:53 UTC 2022
+Thu Nov  3 02:43:54 UTC 2022
+Thu Nov  3 02:43:55 UTC 2022
+Thu Nov  3 02:43:56 UTC 2022
+Thu Nov  3 02:43:57 UTC 2022
+Thu Nov  3 02:43:58 UTC 2022
+Thu Nov  3 02:43:59 UTC 2022
+Thu Nov  3 02:44:00 UTC 2022
+Thu Nov  3 02:44:01 UTC 2022
+Thu Nov  3 02:44:02 UTC 2022
+Thu Nov  3 02:44:03 UTC 2022
+Thu Nov  3 02:44:04 UTC 2022
+Thu Nov  3 02:44:05 UTC 2022
+Thu Nov  3 02:44:06 UTC 2022
+Thu Nov  3 02:44:07 UTC 2022
+Thu Nov  3 02:44:08 UTC 2022
+Thu Nov  3 02:44:09 UTC 2022
+Thu Nov  3 02:44:10 UTC 2022
+Thu Nov  3 02:44:11 UTC 2022
+Thu Nov  3 02:44:12 UTC 2022
+Thu Nov  3 02:44:13 UTC 2022
+Thu Nov  3 02:44:14 UTC 2022
+Thu Nov  3 02:44:15 UTC 2022
+Thu Nov  3 02:44:16 UTC 2022
+Thu Nov  3 02:44:17 UTC 2022
+Thu Nov  3 02:44:18 UTC 2022
+Thu Nov  3 02:44:19 UTC 2022
+Thu Nov  3 02:44:20 UTC 2022
+Thu Nov  3 02:44:21 UTC 2022
+Thu Nov  3 02:44:22 UTC 2022
+Thu Nov  3 02:44:23 UTC 2022
+Thu Nov  3 02:44:24 UTC 2022
+Thu Nov  3 02:44:25 UTC 2022
+Thu Nov  3 02:44:26 UTC 2022
+Thu Nov  3 02:44:27 UTC 2022
+Thu Nov  3 02:44:28 UTC 2022
+Thu Nov  3 02:44:29 UTC 2022
+Thu Nov  3 02:44:30 UTC 2022
+Thu Nov  3 02:44:31 UTC 2022
+Thu Nov  3 02:44:32 UTC 2022
+Thu Nov  3 02:44:33 UTC 2022
+Thu Nov  3 02:44:34 UTC 2022
+Thu Nov  3 02:44:35 UTC 2022
+Thu Nov  3 02:44:36 UTC 2022
+Thu Nov  3 02:44:37 UTC 2022
+Thu Nov  3 02:44:38 UTC 2022
+Thu Nov  3 02:44:39 UTC 2022
+Thu Nov  3 02:44:40 UTC 2022
+Thu Nov  3 02:44:41 UTC 2022
+Thu Nov  3 02:44:42 UTC 2022
+Thu Nov  3 02:44:43 UTC 2022
+Thu Nov  3 02:44:44 UTC 2022
+Thu Nov  3 02:44:45 UTC 2022
+Thu Nov  3 02:44:46 UTC 2022
+Thu Nov  3 02:44:47 UTC 2022
+Thu Nov  3 02:44:48 UTC 2022
+Thu Nov  3 02:44:49 UTC 2022
+Thu Nov  3 02:44:50 UTC 2022
+Thu Nov  3 02:44:51 UTC 2022
+Thu Nov  3 02:44:52 UTC 2022
+Thu Nov  3 02:44:53 UTC 2022
+Thu Nov  3 02:44:54 UTC 2022
+Thu Nov  3 02:44:55 UTC 2022
+Thu Nov  3 02:44:56 UTC 2022
+Thu Nov  3 02:44:57 UTC 2022
+Thu Nov  3 02:44:58 UTC 2022
+Thu Nov  3 02:44:59 UTC 2022
+^C
+tjdudgml3@labuser71ubuntu:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS     NAMES
+cd137ef53b79   busybox        "sh -c 'while true;d…"   3 minutes ago    Up 3 minutes              demo4
+778a4fedef8d   ubuntu:18.04   "/bin/bash"              12 minutes ago   Up 12 minutes             demo3
+tjdudgml3@labuser71ubuntu:~$ docker stop demo4
+
+demo4
+tjdudgml3@labuser71ubuntu:~$
+tjdudgml3@labuser71ubuntu:~$ docker stop demo3
+demo3
+tjdudgml3@labuser71ubuntu:~$ deocker stop demo2
+Command 'deocker' not found, did you mean:
+  command 'docker' from snap docker (20.10.17)
+  command 'debocker' from deb debocker (0.2.4)
+  command 'docker' from deb docker.io (20.10.12-0ubuntu4)
+  command 'docker' from deb podman-docker (3.4.4+ds1-1ubuntu1)
+See 'snap info <snapname>' for additional versions.
+tjdudgml3@labuser71ubuntu:~$ docker stop demo1
+demo1
+tjdudgml3@labuser71ubuntu:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+tjdudgml3@labuser71ubuntu:~$ docker pa -a
+unknown shorthand flag: 'a' in -a
+See 'docker --help'.
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default "/home/tjdudgml3/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/home/tjdudgml3/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/home/tjdudgml3/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/home/tjdudgml3/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  app*        Docker App (Docker Inc., v0.9.1-beta3)
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.9.1-docker)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  scan*       Docker Scan (Docker Inc., v0.21.0)
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+
+tjdudgml3@labuser71ubuntu:~$ docker pa -al
+unknown shorthand flag: 'a' in -al
+See 'docker --help'.
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default "/home/tjdudgml3/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/home/tjdudgml3/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/home/tjdudgml3/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/home/tjdudgml3/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  app*        Docker App (Docker Inc., v0.9.1-beta3)
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.9.1-docker)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  scan*       Docker Scan (Docker Inc., v0.21.0)
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+
+tjdudgml3@labuser71ubuntu:~$ docker ps -al
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS                        PORTS     NAMES
+cd137ef53b79   busybox   "sh -c 'while true;d…"   5 minutes ago   Exited (137) 58 seconds ago             demo4
+tjdudgml3@labuser71ubuntu:~$ docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED             STATUS                            PORTS     NAMES
+cd137ef53b79   busybox        "sh -c 'while true;d…"   6 minutes ago       Exited (137) About a minute ago             demo4
+778a4fedef8d   ubuntu:18.04   "/bin/bash"              14 minutes ago      Exited (0) 57 seconds ago                   demo3
+3f84b9112c97   ubuntu:18.04   "/bin/bash"              17 minutes ago      Exited (127) 17 minutes ago                 demo2
+68b697954ccb   ubuntu:18.04   "/bin/bash"              21 minutes ago      Exited (1) 18 minutes ago                   demo1
+450189f7e76f   hello-world    "/hello"                 About an hour ago   Exited (0) About an hour ago                mystifying_buck
+0e6e98007451   hello-world    "/hello"                 About an hour ago   Exited (0) About an hour ago                stoic_agnesi
+tjdudgml3@labuser71ubuntu:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+tjdudgml3@labuser71ubuntu:~$ docker rm demo1
+demo1
+tjdudgml3@labuser71ubuntu:~$ docker rm demo2
+demo2
+tjdudgml3@labuser71ubuntu:~$ docker rm demo3
+demo3
+tjdudgml3@labuser71ubuntu:~$ docker rm demo4
+demo4
+tjdudgml3@labuser71ubuntu:~$ docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED             STATUS                         PORTS     NAMES
+450189f7e76f   hello-world   "/hello"   About an hour ago   Exited (0) About an hour ago             mystifying_buck
+0e6e98007451   hello-world   "/hello"   About an hour ago   Exited (0) About an hour ago             stoic_agnesi
+tjdudgml3@labuser71ubuntu:~$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+busybox       latest    bc01a3326866   7 days ago      1.24MB
+ubuntu        18.04     71eaf13299f4   9 days ago      63.1MB
+hello-world   latest    feb5d9fea6a5   13 months ago   13.3kB
+tjdudgml3@labuser71ubuntu:~$ ls
+tjdudgml3@labuser71ubuntu:~$ docker rmi busybox
+Untagged: busybox:latest
+Untagged: busybox@sha256:6bdd92bf5240be1b5f3bf71324f5e371fe59f0e153b27fa1f1620f78ba16963c
+Deleted: sha256:bc01a3326866eedd68525a4d2d91d2cf86f9893db054601d6be524d5c9d03981
+Deleted: sha256:0438ade5aeea533b00cd75095bec75fbc2b307bace4c89bb39b75d428637bcd8
+tjdudgml3@labuser71ubuntu:~$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+ubuntu        18.04     71eaf13299f4   9 days ago      63.1MB
+hello-world   latest    feb5d9fea6a5   13 months ago   13.3kB
+tjdudgml3@labuser71ubuntu:~$ ls
+tjdudgml3@labuser71ubuntu:~$ ls -al
+total 32
+drwxr-x--- 4 tjdudgml3 tjdudgml3 4096 Nov  3 01:44 .
+drwxr-xr-x 3 root      root      4096 Nov  3 00:37 ..
+-rw------- 1 tjdudgml3 tjdudgml3  770 Nov  3 01:44 .bash_history
+-rw-r--r-- 1 tjdudgml3 tjdudgml3  220 Jan  6  2022 .bash_logout
+-rw-r--r-- 1 tjdudgml3 tjdudgml3 3771 Jan  6  2022 .bashrc
+drwx------ 2 tjdudgml3 tjdudgml3 4096 Nov  3 00:44 .cache
+-rw-r--r-- 1 tjdudgml3 tjdudgml3  807 Jan  6  2022 .profile
+drwx------ 2 tjdudgml3 tjdudgml3 4096 Nov  3 00:37 .ssh
+-rw-r--r-- 1 tjdudgml3 tjdudgml3    0 Nov  3 00:48 .sudo_as_admin_successful
+tjdudgml3@labuser71ubuntu:~$ cd bash_history
+-bash: cd: bash_history: No such file or directory
+tjdudgml3@labuser71ubuntu:~$ cd .
+tjdudgml3@labuser71ubuntu:~$ cd ..
+tjdudgml3@labuser71ubuntu:/home$ ls
+tjdudgml3
+tjdudgml3@labuser71ubuntu:/home$ cd tjdudgml3
+tjdudgml3@labuser71ubuntu:~$ ls
+tjdudgml3@labuser71ubuntu:~$ vi hello.txt
+
+[1]+  Stopped                 vi hello.txt
+tjdudgml3@labuser71ubuntu:~$ cat hello.txgt
+cat: hello.txgt: No such file or directory
+tjdudgml3@labuser71ubuntu:~$ cat hello.txt
+cat: hello.txt: No such file or directory
+tjdudgml3@labuser71ubuntu:~$ ls
+tjdudgml3@labuser71ubuntu:~$ vi hello.txt
+tjdudgml3@labuser71ubuntu:~$ rm hello.txt.swp
+rm: cannot remove 'hello.txt.swp': No such file or directory
+tjdudgml3@labuser71ubuntu:~$ ls -a
+.   .bash_history  .bashrc  .hello.txt.swp  .ssh                       .viminfo
+..  .bash_logout   .cache   .profile        .sudo_as_admin_successful
+tjdudgml3@labuser71ubuntu:~$ rm .hello.txt.swp
+tjdudgml3@labuser71ubuntu:~$ vi hello.txt
+
+[2]+  Stopped                 vi hello.txt
+tjdudgml3@labuser71ubuntu:~$ ls
+tjdudgml3@labuser71ubuntu:~$ em .hello.txt.swp
+em: command not found
+tjdudgml3@labuser71ubuntu:~$ rm .hello.txt.swp
+tjdudgml3@labuser71ubuntu:~$ vi hello.txt
+
+[3]+  Stopped                 vi hello.txt
+tjdudgml3@labuser71ubuntu:~$ ls
+hello.txt
+tjdudgml3@labuser71ubuntu:~$ cat hello.txt
+
+
+Hello
+
+tjdudgml3@labuser71ubuntu:~$ vi hello.txt
+tjdudgml3@labuser71ubuntu:~$ ls
+hello.txt
+tjdudgml3@labuser71ubuntu:~$ ls -a
+.   .bash_history  .bashrc  .hello.txt.swp  .ssh                       .viminfo
+..  .bash_logout   .cache   .profile        .sudo_as_admin_successful  hello.txt
+tjdudgml3@labuser71ubuntu:~$ rm .hello.txt.swp
+tjdudgml3@labuser71ubuntu:~$ ls
+hello.txt
+tjdudgml3@labuser71ubuntu:~$ vi hello.txt
+
+[4]+  Stopped                 vi hello.txt
+tjdudgml3@labuser71ubuntu:~$ vi hello.txt
+tjdudgml3@labuser71ubuntu:~$ cat hello.txt
+
+
+Hello
+
+
+tjdudgml3@labuser71ubuntu:~$ touch world.txt
+tjdudgml3@labuser71ubuntu:~$ ls
+hello.txt  world.txt
+tjdudgml3@labuser71ubuntu:~$ vi hello.txt
+
+tjdudgml3@labuser71ubuntu:~$
+tjdudgml3@labuser71ubuntu:~$ rm .hello.txt.swp
+tjdudgml3@labuser71ubuntu:~$ vi hello.txt
+tjdudgml3@labuser71ubuntu:~$ vi hello.txt
+tjdudgml3@labuser71ubuntu:~$ tjdudgml3@labuser71ubuntu:~$ cd ..
+tjdudgml3@labuser71ubuntu:/home$ ls
+tjdudgml3
+tjdudgml3@labuser71ubuntu:/home$ cd 서영희3
+-bash: cd: 서영희3: No such file or directory
+tjdudgml3@labuser71ubuntu:/home$ cd 서영희3
+-bash: cd: 서영희3: No such file or directory
+tjdudgml3@labuser71ubuntu:/home$ cd tjdudgml3
+tjdudgml3@labuser71ubuntu:~$ ls
+hello.txt  world.txt
+tjdudgml3@labuser71ubuntu:~$ ls
+hello.txt  world.txt
+tjdudgml3@labuser71ubuntu:~$ rm hello.txt
+tjdudgml3@labuser71ubuntu:~$ rm world.txt
+tjdudgml3@labuser71ubuntu:~$ cd $HOME
+tjdudgml3@labuser71ubuntu:~$ mk
+mk: command not found
+tjdudgml3@labuser71ubuntu:~$ mkdir docker-practice
+tjdudgml3@labuser71ubuntu:~$ cd docker-practice
+tjdudgml3@labuser71ubuntu:~/docker-practice$ touch Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ld
+ld: no input files
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ vi Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ cd ..
+tjdudgml3@labuser71ubuntu:~$ cd ..
+tjdudgml3@labuser71ubuntu:/home$ vi asd
+tjdudgml3@labuser71ubuntu:/home$ cd $HOME
+tjdudgml3@labuser71ubuntu:~$ cd docker-practice
+tjdudgml3@labuser71ubuntu:~/docker-practice$ vi Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ cat Dockerfile
+FROM ubuntu:18.04
+
+RUN apt-get update
+
+CMD ["echo","Welcome to Microsoft AI School"]
+
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$
+logout
+There are stopped jobs.
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker build --help
+
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+Build an image from a Dockerfile
+
+Options:
+      --add-host list           Add a custom host-to-IP mapping (host:ip)
+      --build-arg list          Set build-time variables
+      --cache-from strings      Images to consider as cache sources
+      --cgroup-parent string    Optional parent cgroup for the container
+      --compress                Compress the build context using gzip
+      --cpu-period int          Limit the CPU CFS (Completely Fair Scheduler) period
+      --cpu-quota int           Limit the CPU CFS (Completely Fair Scheduler) quota
+  -c, --cpu-shares int          CPU shares (relative weight)
+      --cpuset-cpus string      CPUs in which to allow execution (0-3, 0,1)
+      --cpuset-mems string      MEMs in which to allow execution (0-3, 0,1)
+      --disable-content-trust   Skip image verification (default true)
+  -f, --file string             Name of the Dockerfile (Default is 'PATH/Dockerfile')
+      --force-rm                Always remove intermediate containers
+      --iidfile string          Write the image ID to the file
+      --isolation string        Container isolation technology
+      --label list              Set metadata for an image
+  -m, --memory bytes            Memory limit
+      --memory-swap bytes       Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      --network string          Set the networking mode for the RUN instructions during build (default "default")
+      --no-cache                Do not use cache when building the image
+      --pull                    Always attempt to pull a newer version of the image
+  -q, --quiet                   Suppress the build output and print image ID on success
+      --rm                      Remove intermediate containers after a successful build (default true)
+      --security-opt strings    Security options
+      --shm-size bytes          Size of /dev/shm
+  -t, --tag list                Name and optionally a tag in the 'name:tag' format
+      --target string           Set the target build stage to build.
+      --ulimit ulimit           Ulimit options (default [])
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker build -t my-image
+"docker build" requires exactly 1 argument.
+See 'docker build --help'.
+
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+Build an image from a Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker build -t my-image:v1.0.0 .
+Sending build context to Docker daemon  2.048kB
+Step 1/3 : FROM ubuntu:18.04
+ ---> 71eaf13299f4
+Step 2/3 : RUN apt-get update
+ ---> Running in 01c8eeed0f1d
+Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Get:2 http://archive.ubuntu.com/ubuntu bionic InRelease [242 kB]
+Get:3 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [1554 kB]
+Get:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Get:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [83.3 kB]
+Get:6 http://archive.ubuntu.com/ubuntu bionic/restricted amd64 Packages [13.5 kB]
+Get:7 http://archive.ubuntu.com/ubuntu bionic/universe amd64 Packages [11.3 MB]
+Get:8 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [3035 kB]
+Get:9 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [22.8 kB]
+Get:10 http://security.ubuntu.com/ubuntu bionic-security/restricted amd64 Packages [1217 kB]
+Get:11 http://archive.ubuntu.com/ubuntu bionic/multiverse amd64 Packages [186 kB]
+Get:12 http://archive.ubuntu.com/ubuntu bionic/main amd64 Packages [1344 kB]
+Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 Packages [37.1 kB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [3472 kB]
+Get:15 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [2332 kB]
+Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [1267 kB]
+Get:17 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 Packages [20.6 kB]
+Get:18 http://archive.ubuntu.com/ubuntu bionic-backports/main amd64 Packages [64.0 kB]
+Fetched 26.4 MB in 6s (4735 kB/s)
+Reading package lists...
+Removing intermediate container 01c8eeed0f1d
+ ---> 4e582296c243
+Step 3/3 : CMD ["echo","Welcome to Microsoft AI School"]
+ ---> Running in 2b4c5bdd6b60
+Removing intermediate container 2b4c5bdd6b60
+ ---> 4b7b893fb310
+Successfully built 4b7b893fb310
+Successfully tagged my-image:v1.0.0
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED          SIZE
+my-image      v1.0.0    4b7b893fb310   31 seconds ago   106MB
+ubuntu        18.04     71eaf13299f4   9 days ago       63.1MB
+hello-world   latest    feb5d9fea6a5   13 months ago    13.3kB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls -a
+.  ..  Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images | grep my-image
+my-image      v1.0.0    4b7b893fb310   2 minutes ago   106MB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images | grep 106MB
+my-image      v1.0.0    4b7b893fb310   3 minutes ago   106MB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images | grep my-image
+my-image      v1.0.0    4b7b893fb310   3 minutes ago   106MB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls -al | grep Dockerfile
+-rw-rw-r-- 1 tjdudgml3 tjdudgml3   87 Nov  3 04:30 Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls -al
+total 12
+drwxrwxr-x 2 tjdudgml3 tjdudgml3 4096 Nov  3 04:30 .
+drwxr-x--- 5 tjdudgml3 tjdudgml3 4096 Nov  3 04:30 ..
+-rw-rw-r-- 1 tjdudgml3 tjdudgml3   87 Nov  3 04:30 Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+my-image      v1.0.0    4b7b893fb310   5 minutes ago   106MB
+ubuntu        18.04     71eaf13299f4   9 days ago      63.1MB
+hello-world   latest    feb5d9fea6a5   13 months ago   13.3kB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker run -d -p 5000:5000 --name registry registry
+Unable to find image 'registry:latest' locally
+latest: Pulling from library/registry
+213ec9aee27d: Pull complete
+4583459ba037: Pull complete
+6f6a6c5733af: Pull complete
+b136d5c19b1d: Pull complete
+fd4a5435f342: Pull complete
+Digest: sha256:2e830e8b682d73a1b70cac4343a6a541a87d5271617841d87eeb67a824a5b3f2
+Status: Downloaded newer image for registry:latest
+971d95fc624a71866da3a464ceb3bff021a14e0b70db780f056c8c8b1da0901d
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker pa -a
+unknown shorthand flag: 'a' in -a
+See 'docker --help'.
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default "/home/tjdudgml3/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/home/tjdudgml3/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/home/tjdudgml3/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/home/tjdudgml3/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  app*        Docker App (Docker Inc., v0.9.1-beta3)
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.9.1-docker)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  scan*       Docker Scan (Docker Inc., v0.21.0)
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker ps -a
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS                   PORTS
+                    NAMES
+971d95fc624a   registry      "/entrypoint.sh /etc…"   14 seconds ago   Up 13 seconds            0.0.0.0:5000->5000/tcp, :::5000->5000/tcp   registry
+450189f7e76f   hello-world   "/hello"                 3 hours ago      Exited (0) 3 hours ago
+                    mystifying_buck
+0e6e98007451   hello-world   "/hello"                 3 hours ago      Exited (0) 3 hours ago
+                    stoic_agnesi
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker ps -al
+CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS          PORTS
+        NAMES
+971d95fc624a   registry   "/entrypoint.sh /etc…"   17 seconds ago   Up 16 seconds   0.0.0.0:5000->5000/tcp, :::5000->5000/tcp   registry
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker ps
+CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS          PORTS
+        NAMES
+971d95fc624a   registry   "/entrypoint.sh /etc…"   21 seconds ago   Up 21 seconds   0.0.0.0:5000->5000/tcp, :::5000->5000/tcp   registry
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker tag my-image:v1.0.0 localhost:5000/my-image:v.1.0.0
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images
+REPOSITORY                TAG       IMAGE ID       CREATED          SIZE
+my-image                  v1.0.0    4b7b893fb310   12 minutes ago   106MB
+localhost:5000/my-image   v.1.0.0   4b7b893fb310   12 minutes ago   106MB
+ubuntu                    18.04     71eaf13299f4   9 days ago       63.1MB
+registry                  latest    dcb3d42c1744   3 weeks ago      24.1MB
+hello-world               latest    feb5d9fea6a5   13 months ago    13.3kB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker tag my-image:v1.0.0 localhost:5000/my-image:v1.0.0
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker push localhost:5000/my-image:v1.0.0
+The push refers to repository [localhost:5000/my-image]
+a37cee9b953a: Pushed
+69f57fbceb1b: Pushed
+v1.0.0: digest: sha256:68ff222e57056a492c14e2317a114a0411cb253d21bdf4592b511bbe8ae19e25 size: 741
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images
+REPOSITORY                TAG       IMAGE ID       CREATED          SIZE
+my-image                  v1.0.0    4b7b893fb310   13 minutes ago   106MB
+localhost:5000/my-image   v.1.0.0   4b7b893fb310   13 minutes ago   106MB
+localhost:5000/my-image   v1.0.0    4b7b893fb310   13 minutes ago   106MB
+ubuntu                    18.04     71eaf13299f4   9 days ago       63.1MB
+registry                  latest    dcb3d42c1744   3 weeks ago      24.1MB
+hello-world               latest    feb5d9fea6a5   13 months ago    13.3kB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -X GET http://localhost:5000/v2/_catalog
+{"repositories":["my-image"]}
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -X GET http://localhost:5000/_catalog
+404 page not found
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -X GET http://localhost:5000/v2
+<a href="/v2/">Moved Permanently</a>.
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -X GET http://localhost:5000/v2/my-image-tags/list
+404 page not found
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -X GET http://localhost:5000/v2/my-image/tags/list
+{"name":"my-image","tags":["v1.0.0"]}
+tjdudgml3@labuser71ubuntu:~/docker-practice$ cat Dockerfile
+FROM ubuntu:18.04
+
+RUN apt-get update
+
+CMD ["echo","Welcome to Microsoft AI School"]
+
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$ pip --help
+Command 'pip' not found, but can be installed with:
+sudo apt install python3-pip
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: younghee
+Password:
+WARNING! Your password will be stored unencrypted in /home/tjdudgml3/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Dockerfile
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker ps
+CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS          PORTS
+        NAMES
+971d95fc624a   registry   "/entrypoint.sh /etc…"   33 minutes ago   Up 33 minutes   0.0.0.0:5000->5000/tcp, :::5000->5000/tcp   registry
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker tag my-image:v1.0.0 younghee/my-image:v1.0.0
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images
+REPOSITORY                TAG       IMAGE ID       CREATED          SIZE
+my-image                  v1.0.0    4b7b893fb310   46 minutes ago   106MB
+younghee/my-image         v1.0.0    4b7b893fb310   46 minutes ago   106MB
+localhost:5000/my-image   v.1.0.0   4b7b893fb310   46 minutes ago   106MB
+localhost:5000/my-image   v1.0.0    4b7b893fb310   46 minutes ago   106MB
+ubuntu                    18.04     71eaf13299f4   9 days ago       63.1MB
+registry                  latest    dcb3d42c1744   3 weeks ago      24.1MB
+hello-world               latest    feb5d9fea6a5   13 months ago    13.3kB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker push younghee/my-image:v1.0.0
+The push refers to repository [docker.io/younghee/my-image]
+a37cee9b953a: Pushed
+69f57fbceb1b: Mounted from library/ubuntu
+v1.0.0: digest: sha256:68ff222e57056a492c14e2317a114a0411cb253d21bdf4592b511bbe8ae19e25 size: 741
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker push localhost:5000/my-image:v1.0.0
+The push refers to repository [localhost:5000/my-image]
+a37cee9b953a: Layer already exists
+69f57fbceb1b: Layer already exists
+v1.0.0: digest: sha256:68ff222e57056a492c14e2317a114a0411cb253d21bdf4592b511bbe8ae19e25 size: 741
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker push ubuntu
+Using default tag: latest
+The push refers to repository [docker.io/library/ubuntu]
+tag does not exist: ubuntu:latest
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker push ubuntu:18.04
+The push refers to repository [docker.io/library/ubuntu]
+69f57fbceb1b: Layer already exists
+errors:
+denied: requested access to the resource is denied
+unauthorized: authentication required
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker pull younghee/my-image:v1.0.0
+v1.0.0: Pulling from younghee/my-image
+Digest: sha256:68ff222e57056a492c14e2317a114a0411cb253d21bdf4592b511bbe8ae19e25
+Status: Image is up to date for younghee/my-image:v1.0.0
+docker.io/younghee/my-image:v1.0.0
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker pull koreaeva/my-image:v1.0.0
+v1.0.0: Pulling from koreaeva/my-image
+a404e5416296: Already exists
+2da7467a2175: Pull complete
+Digest: sha256:356b062ee995a92e5d28f9bca8354747ba2c0f426538eb80666c3cf254637c32
+Status: Downloaded newer image for koreaeva/my-image:v1.0.0
+docker.io/koreaeva/my-image:v1.0.0
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images
+REPOSITORY                TAG       IMAGE ID       CREATED          SIZE
+koreaeva/my-image         v1.0.0    d6f94dbd9f19   50 minutes ago   106MB
+localhost:5000/my-image   v.1.0.0   4b7b893fb310   50 minutes ago   106MB
+localhost:5000/my-image   v1.0.0    4b7b893fb310   50 minutes ago   106MB
+my-image                  v1.0.0    4b7b893fb310   50 minutes ago   106MB
+younghee/my-image         v1.0.0    4b7b893fb310   50 minutes ago   106MB
+ubuntu                    18.04     71eaf13299f4   9 days ago       63.1MB
+registry                  latest    dcb3d42c1744   3 weeks ago      24.1MB
+hello-world               latest    feb5d9fea6a5   13 months ago    13.3kB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker push koreaeva/my-image:v1.0.0
+The push refers to repository [docker.io/koreaeva/my-image]
+f4b2ce7b65e5: Layer already exists
+69f57fbceb1b: Layer already exists
+errors:
+denied: requested access to the resource is denied
+unauthorized: authentication required
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -X GET http://younghee/v2/_catalog
+curl: (6) Could not resolve host: younghee
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -LO http://storage.googleapis.com/minikube/release/v1.22.0/minikube-li
+nux-amd64
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   207  100   207    0     0   1421      0 --:--:-- --:--:-- --:--:--  1427
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images
+REPOSITORY                TAG       IMAGE ID       CREATED         SIZE
+koreaeva/my-image         v1.0.0    d6f94dbd9f19   2 hours ago     106MB
+my-image                  v1.0.0    4b7b893fb310   2 hours ago     106MB
+younghee/my-image         v1.0.0    4b7b893fb310   2 hours ago     106MB
+localhost:5000/my-image   v.1.0.0   4b7b893fb310   2 hours ago     106MB
+localhost:5000/my-image   v1.0.0    4b7b893fb310   2 hours ago     106MB
+ubuntu                    18.04     71eaf13299f4   9 days ago      63.1MB
+registry                  latest    dcb3d42c1744   3 weeks ago     24.1MB
+hello-world               latest    feb5d9fea6a5   13 months ago   13.3kB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -LO https://storage.googleapis.com/minikube/releases/v1.22.0/minikube-linux-amd64
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 66.5M  100 66.5M    0     0   114M      0 --:--:-- --:--:-- --:--:--  114M
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images
+REPOSITORY                TAG       IMAGE ID       CREATED         SIZE
+koreaeva/my-image         v1.0.0    d6f94dbd9f19   2 hours ago     106MB
+my-image                  v1.0.0    4b7b893fb310   2 hours ago     106MB
+younghee/my-image         v1.0.0    4b7b893fb310   2 hours ago     106MB
+localhost:5000/my-image   v.1.0.0   4b7b893fb310   2 hours ago     106MB
+localhost:5000/my-image   v1.0.0    4b7b893fb310   2 hours ago     106MB
+ubuntu                    18.04     71eaf13299f4   9 days ago      63.1MB
+registry                  latest    dcb3d42c1744   3 weeks ago     24.1MB
+hello-world               latest    feb5d9fea6a5   13 months ago   13.3kB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ sudo install minikube-linux-amd64 /usr/local/bin/minikube
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube --help
+minikube provisions and manages local Kubernetes clusters optimized for development workflows.
+
+Basic Commands:
+  start          Starts a local Kubernetes cluster
+  status         Gets the status of a local Kubernetes cluster
+  stop           Stops a running local Kubernetes cluster
+  delete         Deletes a local Kubernetes cluster
+  dashboard      Access the Kubernetes dashboard running within the minikube cluster
+  pause          pause Kubernetes
+  unpause        unpause Kubernetes
+
+Images Commands:
+  docker-env     Configure environment to use minikube's Docker daemon
+  podman-env     Configure environment to use minikube's Podman service
+  cache          Add, delete, or push a local image into minikube
+  image          Manage images
+
+Configuration and Management Commands:
+  addons         Enable or disable a minikube addon
+  config         Modify persistent configuration values
+  profile        Get or list the current profiles (clusters)
+  update-context Update kubeconfig in case of an IP or port change
+
+Networking and Connectivity Commands:
+  service        Returns a URL to connect to a service
+  tunnel         Connect to LoadBalancer services
+
+Advanced Commands:
+  mount          Mounts the specified directory into minikube
+  ssh            Log into the minikube environment (for debugging)
+  kubectl        Run a kubectl binary matching the cluster version
+  node           Add, remove, or list additional nodes
+  cp             Copy the specified file into minikube
+
+Troubleshooting Commands:
+  ssh-key        Retrieve the ssh identity key path of the specified node
+  ssh-host       Retrieve the ssh host key of the specified node
+  ip             Retrieves the IP address of the specified node
+  logs           Returns logs to debug a local Kubernetes cluster
+  update-check   Print current and latest version number
+  version        Print the version of minikube
+
+Other Commands:
+  completion     Generate command completion for a shell
+
+Use "minikube <command> --help" for more information about a given command.
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube version
+minikube version: v1.22.0
+commit: a03fbcf166e6f74ef224d4a63be4277d017bb62e
+tjdudgml3@labuser71ubuntu:~/docker-practice$
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -LO https://이.k8s.io/release/v1.22.0/bin/linux/kubect1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: xn--hu5b.k8s.io
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -LO https://dl.k8s.io/release/v1.22.0/bin/linux/kubect1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   138  100   138    0     0    478      0 --:--:-- --:--:-- --:--:--   477
+100   214  100   214    0     0    366      0 --:--:-- --:--:-- --:--:--   366
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -LO https://dl.k8s.io/release/v1.22.0/bin/linux/kubectl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   138  100   138    0     0    464      0 --:--:-- --:--:-- --:--:--   463
+100   214  100   214    0     0    370      0 --:--:-- --:--:-- --:--:--   370
+tjdudgml3@labuser71ubuntu:~/docker-practice$ sudo install -o root -m 0755 kubectl /usr/local/bin/kubectl
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl --help
+/usr/local/bin/kubectl: line 1: syntax error near unexpected token `<'
+/usr/local/bin/kubectl: line 1: `<?xml version='1.0' encoding='UTF-8'?><Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Details>No such object: kubernetes-release/release/v1.22.0/bin/linux/kubectl</Details></Error>'
+tjdudgml3@labuser71ubuntu:~/docker-practice$ sudo install -o root -m 0755 kubectl /user/local/bin/kubectl
+install: cannot create regular file '/user/local/bin/kubectl': No such file or directory
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -LO https://dl.k8s.io/release/v1.22.1/bin/linux/amd64/kubectl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   138  100   138    0     0    360      0 --:--:-- --:--:-- --:--:--   360
+100 44.7M  100 44.7M    0     0  41.7M      0  0:00:01  0:00:01 --:--:-- 41.7M
+tjdudgml3@labuser71ubuntu:~/docker-practice$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+tjdudgml3@labuser71ubuntu:~/docker-practice$ [오후 3:41] 김영욱 교장선생님
+    kubectl --help
+<https://teams.microsoft.com/l/message/19:1xxKHK4h6tGzsXeLdTEz8WT2QMS2ZdIRmx9X4baN9dI1@thread.tacv2/1667457701396?tenantId=dfe18bca-714d-40b8-9c3d-89ac9edc2097&amp;groupId=15a529ba-3b3f-41ba-a683-532bcd863167&amp;parentMessageId=1667372853747&amp;teamName=2022 MS AI School&amp;channelName=일반&amp;createdTime=1667457701396&amp;allowXTenantAccess=false>
+[오후: command not found
+kubectl controls the Kubernetes cluster manager.
+
+ Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
+
+Basic Commands (Beginner):
+  create        Create a resource from a file or from stdin
+  expose        Take a replication controller, service, deployment or pod and expose it as a new Kubernetes service
+  run           Run a particular image on the cluster
+  set           Set specific features on objects
+
+Basic Commands (Intermediate):
+  explain       Get documentation for a resource
+  get           Display one or many resources
+  edit          Edit a resource on the server
+  delete        Delete resources by file names, stdin, resources and names, or by resources and label selector
+
+Deploy Commands:
+  rollout       Manage the rollout of a resource
+  scale         Set a new size for a deployment, replica set, or replication controller
+  autoscale     Auto-scale a deployment, replica set, stateful set, or replication controller
+
+Cluster Management Commands:
+  certificate   Modify certificate resources.
+  cluster-info  Display cluster information
+  top           Display resource (CPU/memory) usage
+  cordon        Mark node as unschedulable
+  uncordon      Mark node as schedulable
+  drain         Drain node in preparation for maintenance
+  taint         Update the taints on one or more nodes
+
+Troubleshooting and Debugging Commands:
+  describe      Show details of a specific resource or group of resources
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  proxy         Run a proxy to the Kubernetes API server
+  cp            Copy files and directories to and from containers
+  auth          Inspect authorization
+  debug         Create debugging sessions for troubleshooting workloads and nodes
+
+Advanced Commands:
+  diff          Diff the live version against a would-be applied version
+  apply         Apply a configuration to a resource by file name or stdin
+  patch         Update fields of a resource
+  replace       Replace a resource by file name or stdin
+  wait          Experimental: Wait for a specific condition on one or many resources
+  kustomize     Build a kustomization target from a directory or URL.
+
+Settings Commands:
+  label         Update the labels on a resource
+  annotate      Update the annotations on a resource
+  completion    Output shell completion code for the specified shell (bash or zsh)
+
+Other Commands:
+  api-resources Print the supported API resources on the server
+  api-versions  Print the supported API versions on the server, in the form of "group/version"
+  config        Modify kubeconfig files
+  plugin        Provides utilities for interacting with plugins
+  version       Print the client and server version information
+
+Usage:
+  kubectl [flags] [options]
+
+Use "kubectl <command> --help" for more information about a given command.
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+-bash: syntax error near unexpected token `newline'
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl -- help
+kubectl controls the Kubernetes cluster manager.
+
+ Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
+
+Basic Commands (Beginner):
+  create        Create a resource from a file or from stdin
+  expose        Take a replication controller, service, deployment or pod and expose it as a new Kubernetes service
+  run           Run a particular image on the cluster
+  set           Set specific features on objects
+
+Basic Commands (Intermediate):
+  explain       Get documentation for a resource
+  get           Display one or many resources
+  edit          Edit a resource on the server
+  delete        Delete resources by file names, stdin, resources and names, or by resources and label selector
+
+Deploy Commands:
+  rollout       Manage the rollout of a resource
+  scale         Set a new size for a deployment, replica set, or replication controller
+  autoscale     Auto-scale a deployment, replica set, stateful set, or replication controller
+
+Cluster Management Commands:
+  certificate   Modify certificate resources.
+  cluster-info  Display cluster information
+  top           Display resource (CPU/memory) usage
+  cordon        Mark node as unschedulable
+  uncordon      Mark node as schedulable
+  drain         Drain node in preparation for maintenance
+  taint         Update the taints on one or more nodes
+
+Troubleshooting and Debugging Commands:
+  describe      Show details of a specific resource or group of resources
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  proxy         Run a proxy to the Kubernetes API server
+  cp            Copy files and directories to and from containers
+  auth          Inspect authorization
+  debug         Create debugging sessions for troubleshooting workloads and nodes
+
+Advanced Commands:
+  diff          Diff the live version against a would-be applied version
+  apply         Apply a configuration to a resource by file name or stdin
+  patch         Update fields of a resource
+  replace       Replace a resource by file name or stdin
+  wait          Experimental: Wait for a specific condition on one or many resources
+  kustomize     Build a kustomization target from a directory or URL.
+
+Settings Commands:
+  label         Update the labels on a resource
+  annotate      Update the annotations on a resource
+  completion    Output shell completion code for the specified shell (bash or zsh)
+
+Other Commands:
+  api-resources Print the supported API resources on the server
+  api-versions  Print the supported API versions on the server, in the form of "group/version"
+  config        Modify kubeconfig files
+  plugin        Provides utilities for interacting with plugins
+  version       Print the client and server version information
+
+Usage:
+  kubectl [flags] [options]
+
+Use "kubectl <command> --help" for more information about a given command.
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl --help
+kubectl controls the Kubernetes cluster manager.
+
+ Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
+
+Basic Commands (Beginner):
+  create        Create a resource from a file or from stdin
+  expose        Take a replication controller, service, deployment or pod and expose it as a new Kubernetes service
+  run           Run a particular image on the cluster
+  set           Set specific features on objects
+
+Basic Commands (Intermediate):
+  explain       Get documentation for a resource
+  get           Display one or many resources
+  edit          Edit a resource on the server
+  delete        Delete resources by file names, stdin, resources and names, or by resources and label selector
+
+Deploy Commands:
+  rollout       Manage the rollout of a resource
+  scale         Set a new size for a deployment, replica set, or replication controller
+  autoscale     Auto-scale a deployment, replica set, stateful set, or replication controller
+
+Cluster Management Commands:
+  certificate   Modify certificate resources.
+  cluster-info  Display cluster information
+  top           Display resource (CPU/memory) usage
+  cordon        Mark node as unschedulable
+  uncordon      Mark node as schedulable
+  drain         Drain node in preparation for maintenance
+  taint         Update the taints on one or more nodes
+
+Troubleshooting and Debugging Commands:
+  describe      Show details of a specific resource or group of resources
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  proxy         Run a proxy to the Kubernetes API server
+  cp            Copy files and directories to and from containers
+  auth          Inspect authorization
+  debug         Create debugging sessions for troubleshooting workloads and nodes
+
+Advanced Commands:
+  diff          Diff the live version against a would-be applied version
+  apply         Apply a configuration to a resource by file name or stdin
+  patch         Update fields of a resource
+  replace       Replace a resource by file name or stdin
+  wait          Experimental: Wait for a specific condition on one or many resources
+  kustomize     Build a kustomization target from a directory or URL.
+
+Settings Commands:
+  label         Update the labels on a resource
+  annotate      Update the annotations on a resource
+  completion    Output shell completion code for the specified shell (bash or zsh)
+
+Other Commands:
+  api-resources Print the supported API resources on the server
+  api-versions  Print the supported API versions on the server, in the form of "group/version"
+  config        Modify kubeconfig files
+  plugin        Provides utilities for interacting with plugins
+  version       Print the client and server version information
+
+Usage:
+  kubectl [flags] [options]
+
+Use "kubectl <command> --help" for more information about a given command.
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube start --driver=docker
+😄  minikube v1.22.0 on Ubuntu 22.04
+🎉  minikube 1.27.1 is available! Download it: https://github.com/kubernetes/minikube/releases/tag/v1.27.1
+💡  To disable this notice, run: 'minikube config set WantUpdateNotification false'
+
+✨  Using the docker driver based on user configuration
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+💾  Downloading Kubernetes v1.21.2 preload ...
+    > preloaded-images-k8s-v11-v1...: 502.14 MiB / 502.14 MiB  100.00% 112.74 M
+    > gcr.io/k8s-minikube/kicbase...: 361.08 MiB / 361.09 MiB  100.00% 15.99 Mi
+🔥  Creating docker container (CPUs=2, Memory=4000MB) ...
+🐳  Preparing Kubernetes v1.21.2 on Docker 20.10.7 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+No resources found in default namespace.
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod -n kube-system
+NAME                               READY   STATUS    RESTARTS   AGE
+coredns-558bd4d5db-ttd78           1/1     Running   0          3m58s
+etcd-minikube                      1/1     Running   0          4m13s
+kube-apiserver-minikube            1/1     Running   0          4m10s
+kube-controller-manager-minikube   1/1     Running   0          4m10s
+kube-proxy-shnrq                   1/1     Running   0          3m58s
+kube-scheduler-minikube            1/1     Running   0          4m10s
+storage-provisioner                1/1     Running   1          4m9s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube delete
+🔥  Deleting "minikube" in docker ...
+🔥  Deleting container "minikube" ...
+🔥  Removing /home/tjdudgml3/.minikube/machines/minikube ...
+💀  Removed all traces of the "minikube" cluster.
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube status
+🤷  Profile "minikube" not found. Run "minikube profile list" to view all profiles.
+👉  To start a cluster, run: "minikube start"
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube start --driver=docker
+😄  minikube v1.22.0 on Ubuntu 22.04
+✨  Using the docker driver based on user configuration
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+🔥  Creating docker container (CPUs=2, Memory=4000MB) ...
+🐳  Preparing Kubernetes v1.21.2 on Docker 20.10.7 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: default-storageclass, storage-provisioner
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$ vi pod.yaml
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Dockerfile  kubect1  kubectl  minikube-linux-amd64  pod.yaml
+tjdudgml3@labuser71ubuntu:~/docker-practice$ cd kubectl
+-bash: cd: kubectl: Not a directory
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Dockerfile  kubect1  kubectl  minikube-linux-amd64  pod.yaml
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl apply -f pod.yaml
+pod/counter created
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Dockerfile  kubect1  kubectl  minikube-linux-amd64  pod.yaml
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minicube status
+Command 'minicube' not found, did you mean:
+  command 'minitube' from deb minitube (3.9.1-1)
+Try: sudo apt install <deb name>
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+NAME      READY   STATUS    RESTARTS   AGE
+counter   1/1     Running   0          110s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS   AGE
+default       counter                            1/1     Running   0          7m2s
+kube-system   coredns-558bd4d5db-m5qbx           1/1     Running   0          18m
+kube-system   etcd-minikube                      1/1     Running   0          18m
+kube-system   kube-apiserver-minikube            1/1     Running   0          18m
+kube-system   kube-controller-manager-minikube   1/1     Running   0          18m
+kube-system   kube-proxy-nhr7n                   1/1     Running   0          18m
+kube-system   kube-scheduler-minikube            1/1     Running   0          18m
+kube-system   storage-provisioner                1/1     Running   0          18m
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl describe pod counter
+Name:         counter
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Thu, 03 Nov 2022 07:22:37 +0000
+Labels:       <none>
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  count:
+    Container ID:  docker://ddd077fca6b1dda00e6e8ba60a71bf6c476bf32ad0155797b8196617effffc9a
+    Image:         busybox
+    Image ID:      docker-pullable://busybox@sha256:6bdd92bf5240be1b5f3bf71324f5e371fe59f0e153b27fa1f1620f78ba16963c
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      /bin/sh
+      -c
+      i = 0;while true;do echo "$i: $(date)"; sleep 5; done
+    State:          Running
+      Started:      Thu, 03 Nov 2022 07:22:43 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-jspjq (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-jspjq:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  8m21s  default-scheduler  Successfully assigned default/counter to minikube
+  Normal  Pulling    8m20s  kubelet            Pulling image "busybox"
+  Normal  Pulled     8m15s  kubelet            Successfully pulled image "busybox" in 5.087568908s
+  Normal  Created    8m15s  kubelet            Created container count
+  Normal  Started    8m15s  kubelet            Started container count
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minicube --help
+Command 'minicube' not found, did you mean:
+  command 'minitube' from deb minitube (3.9.1-1)
+Try: sudo apt install <deb name>
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube --help
+minikube provisions and manages local Kubernetes clusters optimized for development workflows.
+
+Basic Commands:
+  start          Starts a local Kubernetes cluster
+  status         Gets the status of a local Kubernetes cluster
+  stop           Stops a running local Kubernetes cluster
+  delete         Deletes a local Kubernetes cluster
+  dashboard      Access the Kubernetes dashboard running within the minikube cluster
+  pause          pause Kubernetes
+  unpause        unpause Kubernetes
+
+Images Commands:
+  docker-env     Configure environment to use minikube's Docker daemon
+  podman-env     Configure environment to use minikube's Podman service
+  cache          Add, delete, or push a local image into minikube
+  image          Manage images
+
+Configuration and Management Commands:
+  addons         Enable or disable a minikube addon
+  config         Modify persistent configuration values
+  profile        Get or list the current profiles (clusters)
+  update-context Update kubeconfig in case of an IP or port change
+
+Networking and Connectivity Commands:
+  service        Returns a URL to connect to a service
+  tunnel         Connect to LoadBalancer services
+
+Advanced Commands:
+  mount          Mounts the specified directory into minikube
+  ssh            Log into the minikube environment (for debugging)
+  kubectl        Run a kubectl binary matching the cluster version
+  node           Add, remove, or list additional nodes
+  cp             Copy the specified file into minikube
+
+Troubleshooting Commands:
+  ssh-key        Retrieve the ssh identity key path of the specified node
+  ssh-host       Retrieve the ssh host key of the specified node
+  ip             Retrieves the IP address of the specified node
+  logs           Returns logs to debug a local Kubernetes cluster
+  update-check   Print current and latest version number
+  version        Print the version of minikube
+
+Other Commands:
+  completion     Generate command completion for a shell
+
+Use "minikube <command> --help" for more information about a given command.
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod -o wide
+NAME      READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+counter   1/1     Running   0          10m   172.17.0.3   minikube   <none>           <none>
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod -w
+NAME      READY   STATUS    RESTARTS   AGE
+counter   1/1     Running   0          12m
+^Ctjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl logs counter
+/bin/sh: i: not found
+: Thu Nov  3 07:22:43 UTC 2022
+: Thu Nov  3 07:22:48 UTC 2022
+: Thu Nov  3 07:22:53 UTC 2022
+: Thu Nov  3 07:22:58 UTC 2022
+: Thu Nov  3 07:23:03 UTC 2022
+: Thu Nov  3 07:23:08 UTC 2022
+: Thu Nov  3 07:23:13 UTC 2022
+: Thu Nov  3 07:23:18 UTC 2022
+: Thu Nov  3 07:23:23 UTC 2022
+: Thu Nov  3 07:23:28 UTC 2022
+: Thu Nov  3 07:23:33 UTC 2022
+: Thu Nov  3 07:23:38 UTC 2022
+: Thu Nov  3 07:23:43 UTC 2022
+: Thu Nov  3 07:23:48 UTC 2022
+: Thu Nov  3 07:23:53 UTC 2022
+: Thu Nov  3 07:23:58 UTC 2022
+: Thu Nov  3 07:24:03 UTC 2022
+: Thu Nov  3 07:24:08 UTC 2022
+: Thu Nov  3 07:24:13 UTC 2022
+: Thu Nov  3 07:24:18 UTC 2022
+: Thu Nov  3 07:24:23 UTC 2022
+: Thu Nov  3 07:24:28 UTC 2022
+: Thu Nov  3 07:24:33 UTC 2022
+: Thu Nov  3 07:24:38 UTC 2022
+: Thu Nov  3 07:24:43 UTC 2022
+: Thu Nov  3 07:24:48 UTC 2022
+: Thu Nov  3 07:24:53 UTC 2022
+: Thu Nov  3 07:24:58 UTC 2022
+: Thu Nov  3 07:25:03 UTC 2022
+: Thu Nov  3 07:25:08 UTC 2022
+: Thu Nov  3 07:25:13 UTC 2022
+: Thu Nov  3 07:25:18 UTC 2022
+: Thu Nov  3 07:25:23 UTC 2022
+: Thu Nov  3 07:25:28 UTC 2022
+: Thu Nov  3 07:25:33 UTC 2022
+: Thu Nov  3 07:25:38 UTC 2022
+: Thu Nov  3 07:25:43 UTC 2022
+: Thu Nov  3 07:25:48 UTC 2022
+: Thu Nov  3 07:25:53 UTC 2022
+: Thu Nov  3 07:25:58 UTC 2022
+: Thu Nov  3 07:26:03 UTC 2022
+: Thu Nov  3 07:26:08 UTC 2022
+: Thu Nov  3 07:26:13 UTC 2022
+: Thu Nov  3 07:26:18 UTC 2022
+: Thu Nov  3 07:26:23 UTC 2022
+: Thu Nov  3 07:26:28 UTC 2022
+: Thu Nov  3 07:26:33 UTC 2022
+: Thu Nov  3 07:26:38 UTC 2022
+: Thu Nov  3 07:26:43 UTC 2022
+: Thu Nov  3 07:26:48 UTC 2022
+: Thu Nov  3 07:26:53 UTC 2022
+: Thu Nov  3 07:26:58 UTC 2022
+: Thu Nov  3 07:27:03 UTC 2022
+: Thu Nov  3 07:27:08 UTC 2022
+: Thu Nov  3 07:27:13 UTC 2022
+: Thu Nov  3 07:27:18 UTC 2022
+: Thu Nov  3 07:27:23 UTC 2022
+: Thu Nov  3 07:27:28 UTC 2022
+: Thu Nov  3 07:27:33 UTC 2022
+: Thu Nov  3 07:27:38 UTC 2022
+: Thu Nov  3 07:27:43 UTC 2022
+: Thu Nov  3 07:27:48 UTC 2022
+: Thu Nov  3 07:27:53 UTC 2022
+: Thu Nov  3 07:27:58 UTC 2022
+: Thu Nov  3 07:28:03 UTC 2022
+: Thu Nov  3 07:28:08 UTC 2022
+: Thu Nov  3 07:28:13 UTC 2022
+: Thu Nov  3 07:28:18 UTC 2022
+: Thu Nov  3 07:28:23 UTC 2022
+: Thu Nov  3 07:28:28 UTC 2022
+: Thu Nov  3 07:28:33 UTC 2022
+: Thu Nov  3 07:28:38 UTC 2022
+: Thu Nov  3 07:28:43 UTC 2022
+: Thu Nov  3 07:28:48 UTC 2022
+: Thu Nov  3 07:28:53 UTC 2022
+: Thu Nov  3 07:28:58 UTC 2022
+: Thu Nov  3 07:29:03 UTC 2022
+: Thu Nov  3 07:29:08 UTC 2022
+: Thu Nov  3 07:29:13 UTC 2022
+: Thu Nov  3 07:29:18 UTC 2022
+: Thu Nov  3 07:29:23 UTC 2022
+: Thu Nov  3 07:29:28 UTC 2022
+: Thu Nov  3 07:29:33 UTC 2022
+: Thu Nov  3 07:29:38 UTC 2022
+: Thu Nov  3 07:29:43 UTC 2022
+: Thu Nov  3 07:29:48 UTC 2022
+: Thu Nov  3 07:29:53 UTC 2022
+: Thu Nov  3 07:29:58 UTC 2022
+: Thu Nov  3 07:30:03 UTC 2022
+: Thu Nov  3 07:30:08 UTC 2022
+: Thu Nov  3 07:30:13 UTC 2022
+: Thu Nov  3 07:30:18 UTC 2022
+: Thu Nov  3 07:30:23 UTC 2022
+: Thu Nov  3 07:30:28 UTC 2022
+: Thu Nov  3 07:30:33 UTC 2022
+: Thu Nov  3 07:30:38 UTC 2022
+: Thu Nov  3 07:30:43 UTC 2022
+: Thu Nov  3 07:30:48 UTC 2022
+: Thu Nov  3 07:30:53 UTC 2022
+: Thu Nov  3 07:30:58 UTC 2022
+: Thu Nov  3 07:31:03 UTC 2022
+: Thu Nov  3 07:31:08 UTC 2022
+: Thu Nov  3 07:31:13 UTC 2022
+: Thu Nov  3 07:31:18 UTC 2022
+: Thu Nov  3 07:31:23 UTC 2022
+: Thu Nov  3 07:31:28 UTC 2022
+: Thu Nov  3 07:31:33 UTC 2022
+: Thu Nov  3 07:31:38 UTC 2022
+: Thu Nov  3 07:31:43 UTC 2022
+: Thu Nov  3 07:31:48 UTC 2022
+: Thu Nov  3 07:31:53 UTC 2022
+: Thu Nov  3 07:31:58 UTC 2022
+: Thu Nov  3 07:32:03 UTC 2022
+: Thu Nov  3 07:32:08 UTC 2022
+: Thu Nov  3 07:32:13 UTC 2022
+: Thu Nov  3 07:32:18 UTC 2022
+: Thu Nov  3 07:32:23 UTC 2022
+: Thu Nov  3 07:32:28 UTC 2022
+: Thu Nov  3 07:32:33 UTC 2022
+: Thu Nov  3 07:32:38 UTC 2022
+: Thu Nov  3 07:32:43 UTC 2022
+: Thu Nov  3 07:32:48 UTC 2022
+: Thu Nov  3 07:32:53 UTC 2022
+: Thu Nov  3 07:32:58 UTC 2022
+: Thu Nov  3 07:33:03 UTC 2022
+: Thu Nov  3 07:33:08 UTC 2022
+: Thu Nov  3 07:33:13 UTC 2022
+: Thu Nov  3 07:33:18 UTC 2022
+: Thu Nov  3 07:33:23 UTC 2022
+: Thu Nov  3 07:33:28 UTC 2022
+: Thu Nov  3 07:33:33 UTC 2022
+: Thu Nov  3 07:33:38 UTC 2022
+: Thu Nov  3 07:33:43 UTC 2022
+: Thu Nov  3 07:33:48 UTC 2022
+: Thu Nov  3 07:33:53 UTC 2022
+: Thu Nov  3 07:33:58 UTC 2022
+: Thu Nov  3 07:34:03 UTC 2022
+: Thu Nov  3 07:34:08 UTC 2022
+: Thu Nov  3 07:34:13 UTC 2022
+: Thu Nov  3 07:34:18 UTC 2022
+: Thu Nov  3 07:34:23 UTC 2022
+: Thu Nov  3 07:34:28 UTC 2022
+: Thu Nov  3 07:34:33 UTC 2022
+: Thu Nov  3 07:34:38 UTC 2022
+: Thu Nov  3 07:34:43 UTC 2022
+: Thu Nov  3 07:34:48 UTC 2022
+: Thu Nov  3 07:34:53 UTC 2022
+: Thu Nov  3 07:34:58 UTC 2022
+: Thu Nov  3 07:35:03 UTC 2022
+: Thu Nov  3 07:35:08 UTC 2022
+: Thu Nov  3 07:35:13 UTC 2022
+: Thu Nov  3 07:35:18 UTC 2022
+: Thu Nov  3 07:35:23 UTC 2022
+: Thu Nov  3 07:35:28 UTC 2022
+: Thu Nov  3 07:35:33 UTC 2022
+: Thu Nov  3 07:35:38 UTC 2022
+: Thu Nov  3 07:35:43 UTC 2022
+: Thu Nov  3 07:35:48 UTC 2022
+: Thu Nov  3 07:35:53 UTC 2022
+: Thu Nov  3 07:35:58 UTC 2022
+: Thu Nov  3 07:36:03 UTC 2022
+: Thu Nov  3 07:36:08 UTC 2022
+: Thu Nov  3 07:36:13 UTC 2022
+: Thu Nov  3 07:36:18 UTC 2022
+: Thu Nov  3 07:36:23 UTC 2022
+: Thu Nov  3 07:36:28 UTC 2022
+: Thu Nov  3 07:36:33 UTC 2022
+: Thu Nov  3 07:36:38 UTC 2022
+: Thu Nov  3 07:36:43 UTC 2022
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl logs counter -f
+/bin/sh: i: not found
+: Thu Nov  3 07:22:43 UTC 2022
+: Thu Nov  3 07:22:48 UTC 2022
+: Thu Nov  3 07:22:53 UTC 2022
+: Thu Nov  3 07:22:58 UTC 2022
+: Thu Nov  3 07:23:03 UTC 2022
+: Thu Nov  3 07:23:08 UTC 2022
+: Thu Nov  3 07:23:13 UTC 2022
+: Thu Nov  3 07:23:18 UTC 2022
+: Thu Nov  3 07:23:23 UTC 2022
+: Thu Nov  3 07:23:28 UTC 2022
+: Thu Nov  3 07:23:33 UTC 2022
+: Thu Nov  3 07:23:38 UTC 2022
+: Thu Nov  3 07:23:43 UTC 2022
+: Thu Nov  3 07:23:48 UTC 2022
+: Thu Nov  3 07:23:53 UTC 2022
+: Thu Nov  3 07:23:58 UTC 2022
+: Thu Nov  3 07:24:03 UTC 2022
+: Thu Nov  3 07:24:08 UTC 2022
+: Thu Nov  3 07:24:13 UTC 2022
+: Thu Nov  3 07:24:18 UTC 2022
+: Thu Nov  3 07:24:23 UTC 2022
+: Thu Nov  3 07:24:28 UTC 2022
+: Thu Nov  3 07:24:33 UTC 2022
+: Thu Nov  3 07:24:38 UTC 2022
+: Thu Nov  3 07:24:43 UTC 2022
+: Thu Nov  3 07:24:48 UTC 2022
+: Thu Nov  3 07:24:53 UTC 2022
+: Thu Nov  3 07:24:58 UTC 2022
+: Thu Nov  3 07:25:03 UTC 2022
+: Thu Nov  3 07:25:08 UTC 2022
+: Thu Nov  3 07:25:13 UTC 2022
+: Thu Nov  3 07:25:18 UTC 2022
+: Thu Nov  3 07:25:23 UTC 2022
+: Thu Nov  3 07:25:28 UTC 2022
+: Thu Nov  3 07:25:33 UTC 2022
+: Thu Nov  3 07:25:38 UTC 2022
+: Thu Nov  3 07:25:43 UTC 2022
+: Thu Nov  3 07:25:48 UTC 2022
+: Thu Nov  3 07:25:53 UTC 2022
+: Thu Nov  3 07:25:58 UTC 2022
+: Thu Nov  3 07:26:03 UTC 2022
+: Thu Nov  3 07:26:08 UTC 2022
+: Thu Nov  3 07:26:13 UTC 2022
+: Thu Nov  3 07:26:18 UTC 2022
+: Thu Nov  3 07:26:23 UTC 2022
+: Thu Nov  3 07:26:28 UTC 2022
+: Thu Nov  3 07:26:33 UTC 2022
+: Thu Nov  3 07:26:38 UTC 2022
+: Thu Nov  3 07:26:43 UTC 2022
+: Thu Nov  3 07:26:48 UTC 2022
+: Thu Nov  3 07:26:53 UTC 2022
+: Thu Nov  3 07:26:58 UTC 2022
+: Thu Nov  3 07:27:03 UTC 2022
+: Thu Nov  3 07:27:08 UTC 2022
+: Thu Nov  3 07:27:13 UTC 2022
+: Thu Nov  3 07:27:18 UTC 2022
+: Thu Nov  3 07:27:23 UTC 2022
+: Thu Nov  3 07:27:28 UTC 2022
+: Thu Nov  3 07:27:33 UTC 2022
+: Thu Nov  3 07:27:38 UTC 2022
+: Thu Nov  3 07:27:43 UTC 2022
+: Thu Nov  3 07:27:48 UTC 2022
+: Thu Nov  3 07:27:53 UTC 2022
+: Thu Nov  3 07:27:58 UTC 2022
+: Thu Nov  3 07:28:03 UTC 2022
+: Thu Nov  3 07:28:08 UTC 2022
+: Thu Nov  3 07:28:13 UTC 2022
+: Thu Nov  3 07:28:18 UTC 2022
+: Thu Nov  3 07:28:23 UTC 2022
+: Thu Nov  3 07:28:28 UTC 2022
+: Thu Nov  3 07:28:33 UTC 2022
+: Thu Nov  3 07:28:38 UTC 2022
+: Thu Nov  3 07:28:43 UTC 2022
+: Thu Nov  3 07:28:48 UTC 2022
+: Thu Nov  3 07:28:53 UTC 2022
+: Thu Nov  3 07:28:58 UTC 2022
+: Thu Nov  3 07:29:03 UTC 2022
+: Thu Nov  3 07:29:08 UTC 2022
+: Thu Nov  3 07:29:13 UTC 2022
+: Thu Nov  3 07:29:18 UTC 2022
+: Thu Nov  3 07:29:23 UTC 2022
+: Thu Nov  3 07:29:28 UTC 2022
+: Thu Nov  3 07:29:33 UTC 2022
+: Thu Nov  3 07:29:38 UTC 2022
+: Thu Nov  3 07:29:43 UTC 2022
+: Thu Nov  3 07:29:48 UTC 2022
+: Thu Nov  3 07:29:53 UTC 2022
+: Thu Nov  3 07:29:58 UTC 2022
+: Thu Nov  3 07:30:03 UTC 2022
+: Thu Nov  3 07:30:08 UTC 2022
+: Thu Nov  3 07:30:13 UTC 2022
+: Thu Nov  3 07:30:18 UTC 2022
+: Thu Nov  3 07:30:23 UTC 2022
+: Thu Nov  3 07:30:28 UTC 2022
+: Thu Nov  3 07:30:33 UTC 2022
+: Thu Nov  3 07:30:38 UTC 2022
+: Thu Nov  3 07:30:43 UTC 2022
+: Thu Nov  3 07:30:48 UTC 2022
+: Thu Nov  3 07:30:53 UTC 2022
+: Thu Nov  3 07:30:58 UTC 2022
+: Thu Nov  3 07:31:03 UTC 2022
+: Thu Nov  3 07:31:08 UTC 2022
+: Thu Nov  3 07:31:13 UTC 2022
+: Thu Nov  3 07:31:18 UTC 2022
+: Thu Nov  3 07:31:23 UTC 2022
+: Thu Nov  3 07:31:28 UTC 2022
+: Thu Nov  3 07:31:33 UTC 2022
+: Thu Nov  3 07:31:38 UTC 2022
+: Thu Nov  3 07:31:43 UTC 2022
+: Thu Nov  3 07:31:48 UTC 2022
+: Thu Nov  3 07:31:53 UTC 2022
+: Thu Nov  3 07:31:58 UTC 2022
+: Thu Nov  3 07:32:03 UTC 2022
+: Thu Nov  3 07:32:08 UTC 2022
+: Thu Nov  3 07:32:13 UTC 2022
+: Thu Nov  3 07:32:18 UTC 2022
+: Thu Nov  3 07:32:23 UTC 2022
+: Thu Nov  3 07:32:28 UTC 2022
+: Thu Nov  3 07:32:33 UTC 2022
+: Thu Nov  3 07:32:38 UTC 2022
+: Thu Nov  3 07:32:43 UTC 2022
+: Thu Nov  3 07:32:48 UTC 2022
+: Thu Nov  3 07:32:53 UTC 2022
+: Thu Nov  3 07:32:58 UTC 2022
+: Thu Nov  3 07:33:03 UTC 2022
+: Thu Nov  3 07:33:08 UTC 2022
+: Thu Nov  3 07:33:13 UTC 2022
+: Thu Nov  3 07:33:18 UTC 2022
+: Thu Nov  3 07:33:23 UTC 2022
+: Thu Nov  3 07:33:28 UTC 2022
+: Thu Nov  3 07:33:33 UTC 2022
+: Thu Nov  3 07:33:38 UTC 2022
+: Thu Nov  3 07:33:43 UTC 2022
+: Thu Nov  3 07:33:48 UTC 2022
+: Thu Nov  3 07:33:53 UTC 2022
+: Thu Nov  3 07:33:58 UTC 2022
+: Thu Nov  3 07:34:03 UTC 2022
+: Thu Nov  3 07:34:08 UTC 2022
+: Thu Nov  3 07:34:13 UTC 2022
+: Thu Nov  3 07:34:18 UTC 2022
+: Thu Nov  3 07:34:23 UTC 2022
+: Thu Nov  3 07:34:28 UTC 2022
+: Thu Nov  3 07:34:33 UTC 2022
+: Thu Nov  3 07:34:38 UTC 2022
+: Thu Nov  3 07:34:43 UTC 2022
+: Thu Nov  3 07:34:48 UTC 2022
+: Thu Nov  3 07:34:53 UTC 2022
+: Thu Nov  3 07:34:58 UTC 2022
+: Thu Nov  3 07:35:03 UTC 2022
+: Thu Nov  3 07:35:08 UTC 2022
+: Thu Nov  3 07:35:13 UTC 2022
+: Thu Nov  3 07:35:18 UTC 2022
+: Thu Nov  3 07:35:23 UTC 2022
+: Thu Nov  3 07:35:28 UTC 2022
+: Thu Nov  3 07:35:33 UTC 2022
+: Thu Nov  3 07:35:38 UTC 2022
+: Thu Nov  3 07:35:43 UTC 2022
+: Thu Nov  3 07:35:48 UTC 2022
+: Thu Nov  3 07:35:53 UTC 2022
+: Thu Nov  3 07:35:58 UTC 2022
+: Thu Nov  3 07:36:03 UTC 2022
+: Thu Nov  3 07:36:08 UTC 2022
+: Thu Nov  3 07:36:13 UTC 2022
+: Thu Nov  3 07:36:18 UTC 2022
+: Thu Nov  3 07:36:23 UTC 2022
+: Thu Nov  3 07:36:28 UTC 2022
+: Thu Nov  3 07:36:33 UTC 2022
+: Thu Nov  3 07:36:38 UTC 2022
+: Thu Nov  3 07:36:43 UTC 2022
+: Thu Nov  3 07:36:48 UTC 2022
+: Thu Nov  3 07:36:53 UTC 2022
+: Thu Nov  3 07:36:58 UTC 2022
+: Thu Nov  3 07:37:03 UTC 2022
+: Thu Nov  3 07:37:08 UTC 2022
+: Thu Nov  3 07:37:13 UTC 2022
+: Thu Nov  3 07:37:18 UTC 2022
+: Thu Nov  3 07:37:23 UTC 2022
+: Thu Nov  3 07:37:28 UTC 2022
+^C
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl exec -it counter /bin/bash
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+OCI runtime exec failed: exec failed: container_linux.go:380: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown
+command terminated with exit code 126
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl exec -it counter sh
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+/ # ps
+PID   USER     TIME  COMMAND
+    1 root      0:00 /bin/sh -c i = 0;while true;do echo "$i: $(date)"; sleep 5; done
+  477 root      0:00 sh
+  502 root      0:00 sleep 5
+  503 root      0:00 ps
+/ # ls
+bin   dev   etc   home  proc  root  sys   tmp   usr   var
+/ # exit
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl delete pod counter
+pod "counter" deleted
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl delete pod -f pod.yaml
+error: when paths, URLs, or stdin is provided as input, you may not specify resource arguments as well
+tjdudgml3@labuser71ubuntu:~/docker-practice$ vi Deployment.yaml
+tjdudgml3@labuser71ubuntu:~/docker-practice$ tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Deployment.yaml  Dockerfile  kubect1  kubectl  minikube-linux-amd64  pod.yaml
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl apply -f Deployment.yaml
+deployment.apps/nginx-deployment created
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get deployment
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3/3     3            3           35s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ cat Deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get deployment
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3/3     3            3           92s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Deployment.yaml  Dockerfile  kubect1  kubectl  minikube-linux-amd64  pod.yaml
+tjdudgml3@labuser71ubuntu:~/docker-practice$ cat pod.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: counter
+spec:
+  containers:
+  - name: count
+    image: busybox
+    args: [/bin/sh, -c, 'i = 0;while true;do echo "$i: $(date)"; sleep 5; done']
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-66b6c48dd5-d6cll   1/1     Running   0          6m39s
+nginx-deployment-66b6c48dd5-hxtf5   1/1     Running   0          6m39s
+nginx-deployment-66b6c48dd5-xzzxj   1/1     Running   0          6m39s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
+koreaeva/my-image             v1.0.0    d6f94dbd9f19   4 hours ago     106MB
+my-image                      v1.0.0    4b7b893fb310   4 hours ago     106MB
+younghee/my-image             v1.0.0    4b7b893fb310   4 hours ago     106MB
+localhost:5000/my-image       v.1.0.0   4b7b893fb310   4 hours ago     106MB
+localhost:5000/my-image       v1.0.0    4b7b893fb310   4 hours ago     106MB
+ubuntu                        18.04     71eaf13299f4   9 days ago      63.1MB
+registry                      latest    dcb3d42c1744   3 weeks ago     24.1MB
+hello-world                   latest    feb5d9fea6a5   13 months ago   13.3kB
+gcr.io/k8s-minikube/kicbase   v0.0.25   8768eddc4356   16 months ago   1.1GB
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube images
+Error: unknown command "images" for "minikube"
+
+Did you mean this?
+        image
+
+Run 'minikube --help' for usage.
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube image
+Manage images
+
+Available Commands:
+  build       Build a container image in minikube
+  load        Load a image into minikube
+  ls          List images
+  rm          Remove one or more images
+
+Use "minikube <command> --help" for more information about a given command.
+tjdudgml3@labuser71ubuntu:~/docker-practice$ minikube ls
+Error: unknown command "ls" for "minikube"
+
+Did you mean this?
+        cp
+        ip
+        logs
+        ssh
+
+Run 'minikube --help' for usage.
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Deployment.yaml  Dockerfile  kubect1  kubectl  minikube-linux-amd64  pod.yaml
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl delete pod nginx-deployment-66b6c48dd5-d6cll
+pod "nginx-deployment-66b6c48dd5-d6cll" deleted
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-66b6c48dd5-hxtf5   1/1     Running   0          10m
+nginx-deployment-66b6c48dd5-mgbck   1/1     Running   0          20s
+nginx-deployment-66b6c48dd5-xzzxj   1/1     Running   0          10m
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl scale deployment/nginx-deployment --replicas=5
+deployment.apps/nginx-deployment scaled
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-66b6c48dd5-6989q   1/1     Running   0          15s
+nginx-deployment-66b6c48dd5-hxtf5   1/1     Running   0          13m
+nginx-deployment-66b6c48dd5-l4zvx   1/1     Running   0          15s
+nginx-deployment-66b6c48dd5-mgbck   1/1     Running   0          3m25s
+nginx-deployment-66b6c48dd5-xzzxj   1/1     Running   0          13m
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl scale deployment/nginx-deployment --replicas=20
+deployment.apps/nginx-deployment scaled
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+NAME                                READY   STATUS              RESTARTS   AGE
+nginx-deployment-66b6c48dd5-2l2dh   0/1     Pending             0          2s
+nginx-deployment-66b6c48dd5-4jdf6   0/1     ContainerCreating   0          2s
+nginx-deployment-66b6c48dd5-6989q   1/1     Running             0          85s
+nginx-deployment-66b6c48dd5-6bzfb   0/1     Pending             0          2s
+nginx-deployment-66b6c48dd5-6tllp   0/1     ContainerCreating   0          2s
+nginx-deployment-66b6c48dd5-7t6pm   0/1     Pending             0          2s
+nginx-deployment-66b6c48dd5-86msg   0/1     Pending             0          2s
+nginx-deployment-66b6c48dd5-fn97n   0/1     ContainerCreating   0          2s
+nginx-deployment-66b6c48dd5-hxtf5   1/1     Running             0          14m
+nginx-deployment-66b6c48dd5-jt7dn   0/1     ContainerCreating   0          2s
+nginx-deployment-66b6c48dd5-knmrm   0/1     Pending             0          2s
+nginx-deployment-66b6c48dd5-l4zvx   1/1     Running             0          85s
+nginx-deployment-66b6c48dd5-mgbck   1/1     Running             0          4m35s
+nginx-deployment-66b6c48dd5-mt8p9   0/1     ContainerCreating   0          2s
+nginx-deployment-66b6c48dd5-q6xvh   0/1     Pending             0          2s
+nginx-deployment-66b6c48dd5-qbqpl   0/1     Pending             0          2s
+nginx-deployment-66b6c48dd5-qv24l   0/1     Pending             0          2s
+nginx-deployment-66b6c48dd5-tk9qk   0/1     ContainerCreating   0          2s
+nginx-deployment-66b6c48dd5-xzzxj   1/1     Running             0          14m
+nginx-deployment-66b6c48dd5-zlcj2   0/1     Pending             0          2s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+NAME                                READY   STATUS              RESTARTS   AGE
+nginx-deployment-66b6c48dd5-2l2dh   0/1     Pending             0          8s
+nginx-deployment-66b6c48dd5-4jdf6   1/1     Running             0          8s
+nginx-deployment-66b6c48dd5-6989q   1/1     Running             0          91s
+nginx-deployment-66b6c48dd5-6bzfb   0/1     ContainerCreating   0          8s
+nginx-deployment-66b6c48dd5-6tllp   1/1     Running             0          8s
+nginx-deployment-66b6c48dd5-7t6pm   0/1     ContainerCreating   0          8s
+nginx-deployment-66b6c48dd5-86msg   0/1     ContainerCreating   0          8s
+nginx-deployment-66b6c48dd5-fn97n   0/1     ContainerCreating   0          8s
+nginx-deployment-66b6c48dd5-hxtf5   1/1     Running             0          14m
+nginx-deployment-66b6c48dd5-jt7dn   0/1     ContainerCreating   0          8s
+nginx-deployment-66b6c48dd5-knmrm   0/1     ContainerCreating   0          8s
+nginx-deployment-66b6c48dd5-l4zvx   1/1     Running             0          91s
+nginx-deployment-66b6c48dd5-mgbck   1/1     Running             0          4m41s
+nginx-deployment-66b6c48dd5-mt8p9   0/1     ContainerCreating   0          8s
+nginx-deployment-66b6c48dd5-q6xvh   0/1     ContainerCreating   0          8s
+nginx-deployment-66b6c48dd5-qbqpl   0/1     ContainerCreating   0          8s
+nginx-deployment-66b6c48dd5-qv24l   0/1     ContainerCreating   0          8s
+nginx-deployment-66b6c48dd5-tk9qk   1/1     Running             0          8s
+nginx-deployment-66b6c48dd5-xzzxj   1/1     Running             0          14m
+nginx-deployment-66b6c48dd5-zlcj2   0/1     ContainerCreating   0          8s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl scale deployment/nginx-deployment --replicas=1
+deployment.apps/nginx-deployment scaled
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+NAME                                READY   STATUS        RESTARTS   AGE
+nginx-deployment-66b6c48dd5-2l2dh   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-4jdf6   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-6989q   1/1     Terminating   0          2m57s
+nginx-deployment-66b6c48dd5-6bzfb   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-6tllp   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-7t6pm   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-86msg   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-fn97n   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-hxtf5   1/1     Terminating   0          16m
+nginx-deployment-66b6c48dd5-jt7dn   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-knmrm   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-l4zvx   1/1     Terminating   0          2m57s
+nginx-deployment-66b6c48dd5-mgbck   1/1     Terminating   0          6m7s
+nginx-deployment-66b6c48dd5-mt8p9   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-q6xvh   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-qbqpl   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-qv24l   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-tk9qk   1/1     Terminating   0          94s
+nginx-deployment-66b6c48dd5-xzzxj   1/1     Running       0          16m
+nginx-deployment-66b6c48dd5-zlcj2   1/1     Terminating   0          94s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+NAME                                READY   STATUS        RESTARTS   AGE
+nginx-deployment-66b6c48dd5-2l2dh   0/1     Terminating   0          103s
+nginx-deployment-66b6c48dd5-6bzfb   0/1     Terminating   0          103s
+nginx-deployment-66b6c48dd5-6tllp   1/1     Terminating   0          103s
+nginx-deployment-66b6c48dd5-7t6pm   0/1     Terminating   0          103s
+nginx-deployment-66b6c48dd5-86msg   0/1     Terminating   0          103s
+nginx-deployment-66b6c48dd5-hxtf5   0/1     Terminating   0          16m
+nginx-deployment-66b6c48dd5-q6xvh   1/1     Terminating   0          103s
+nginx-deployment-66b6c48dd5-qbqpl   0/1     Terminating   0          103s
+nginx-deployment-66b6c48dd5-tk9qk   0/1     Terminating   0          103s
+nginx-deployment-66b6c48dd5-xzzxj   1/1     Running       0          16m
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl delete deployment nginx-deployment
+deployment.apps "nginx-deployment" deleted
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+No resources found in default namespace.
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl apply -f Deployment.yaml
+deployment.apps/nginx-deployment created
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl scale deployment/nginx-deployment --replicas=0
+deployment.apps/nginx-deployment scaled
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+NAME                                READY   STATUS        RESTARTS   AGE
+nginx-deployment-66b6c48dd5-8nw65   0/1     Terminating   0          12s
+nginx-deployment-66b6c48dd5-hjwdh   0/1     Terminating   0          12s
+nginx-deployment-66b6c48dd5-qctfl   0/1     Terminating   0          12s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+No resources found in default namespace.
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl scale deployment/nginx-deployment --replicas=3
+deployment.apps/nginx-deployment scaled
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-66b6c48dd5-6zbbf   1/1     Running   0          8s
+nginx-deployment-66b6c48dd5-k6d5v   1/1     Running   0          8s
+nginx-deployment-66b6c48dd5-pnfpp   1/1     Running   0          8s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get pod -o wide
+NAME                                READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+nginx-deployment-66b6c48dd5-6zbbf   1/1     Running   0          50s   172.17.0.3   minikube   <none>           <none>
+nginx-deployment-66b6c48dd5-k6d5v   1/1     Running   0          50s   172.17.0.4   minikube   <none>           <none>
+nginx-deployment-66b6c48dd5-pnfpp   1/1     Running   0          50s   172.17.0.5   minikube   <none>           <none>
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -X GET 172.17.0.4 -vvv
+Note: Unnecessary use of -X or --request, GET is already inferred.
+*   Trying 172.17.0.4:80...
+* connect to 172.17.0.4 port 80 failed: No route to host
+* Failed to connect to 172.17.0.4 port 80 after 3069 ms: No route to host
+* Closing connection 0
+curl: (7) Failed to connect to 172.17.0.4 port 80 after 3069 ms: No route to host
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ping yahoo.com
+PING yahoo.com (98.137.11.163) 56(84) bytes of data.
+64 bytes from media-router-fp74.prod.media.vip.gq1.yahoo.com (98.137.11.163): icmp_seq=1 ttl=43 time=122 ms
+64 bytes from media-router-fp74.prod.media.vip.gq1.yahoo.com (98.137.11.163): icmp_seq=2 ttl=43 time=121 ms
+64 bytes from media-router-fp74.prod.media.vip.gq1.yahoo.com (98.137.11.163): icmp_seq=3 ttl=43 time=121 ms
+64 bytes from media-router-fp74.prod.media.vip.gq1.yahoo.com (98.137.11.163): icmp_seq=4 ttl=43 time=122 ms
+64 bytes from media-router-fp74.prod.media.vip.gq1.yahoo.com (98.137.11.163): icmp_seq=5 ttl=43 time=121 ms
+^C
+--- yahoo.com ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4005ms
+rtt min/avg/max/mdev = 120.907/121.448/122.099/0.405 ms
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ping naver.com
+PING naver.com (223.130.200.104) 56(84) bytes of data.
+^C
+--- naver.com ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4093ms
+
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ping google.com
+PING google.com (142.250.207.110) 56(84) bytes of data.
+64 bytes from kix06s11-in-f14.1e100.net (142.250.207.110): icmp_seq=1 ttl=110 time=17.3 ms
+64 bytes from kix06s11-in-f14.1e100.net (142.250.207.110): icmp_seq=2 ttl=110 time=17.5 ms
+64 bytes from kix06s11-in-f14.1e100.net (142.250.207.110): icmp_seq=3 ttl=110 time=17.4 ms
+^C
+--- google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 17.318/17.395/17.458/0.058 ms
+tjdudgml3@labuser71ubuntu:~/docker-practice$ vi Service.yaml
+tjdudgml3@labuser71ubuntu:~/docker-practice$ ls
+Deployment.yaml  Dockerfile  Service.yaml  kubect1  kubectl  minikube-linux-amd64  pod.yaml
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl apply -f Service.yaml
+service/my-nginx created
+tjdudgml3@labuser71ubuntu:~/docker-practice$ kubectl get Service
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP        97m
+my-nginx     NodePort    10.102.58.30   <none>        80:30975/TCP   7s
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -X GET 10.102.58.30:80
+^C
+tjdudgml3@labuser71ubuntu:~/docker-practice$ curl -X GET 10.102.58.30:80 -vvv
+Note: Unnecessary use of -X or --request, GET is already inferred.
+*   Trying 10.102.58.30:80...
+^C
+tjdudgml3@labuser71ubuntu:~/docker-practice$ client_loop: send disconnect: Connection reset
+PS C:\Users\서영희>

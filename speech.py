@@ -13,7 +13,7 @@ speech_config = speechsdk.SpeechConfig(subscription='03c67527a4004be48bf47832b77
 # Creates a recognizer with the given settings
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 
-print("Say something...")
+print("speech to text testing.... say something...")
 
 
 # Starts speech recognition, and returns after a single utterance is recognized. The end of a
@@ -32,8 +32,7 @@ while(True):
         print("Recognized: {}".format(result.text))
         if result.text == '그만.':
             print("program stopped")
-            import sys
-            sys.exit(1)
+            break
             
     elif result.reason == speechsdk.ResultReason.NoMatch:
         print("No speech could be recognized: {}".format(result.no_match_details))
