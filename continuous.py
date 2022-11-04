@@ -19,7 +19,7 @@ except ImportError:
 
 # Set up the subscription info for the Speech Service:
 # Replace with your own subscription key and service region (e.g., "westus").
-speech_key, service_region, language = "03c67527a4004be48bf47832b776ee8b", "koreacentral", "ko-kr"
+speech_key, service_region, language = "", "koreacentral", "ko-kr"
 
 def speech_recognize_continuous_async_from_microphone():
     """performs continuous speech recognition asynchronously with input from microphone"""
