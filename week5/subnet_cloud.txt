@@ -1,0 +1,32 @@
+10.0.0.1/16
+10.0.0.1/24  왜 16? 24?
+
+왜 10.0.0.1?? 어떤이유?
+
+bastion이란 뭐지?
+bastion  - 가상머신의 문지기역할. 관리자역할도한다
+azure bastion은 원클릭으로 가상머신에 접속할수있게함
+외부에서 사설망으로 접근할수있게 해주는 보안이슈를 해결하는 네트워크 - bastion
+
+
+subnet은?
+
+public network - 공용망 like 인터넷
+private network - 사설망
+
+router - 외부 내부에서 입출입을 가능하게함, 어늦어도 보안적이슈때문에 제한을 두기도함. 사설망에서 private망으로, private -> private
+보안적인 router == bastion?
+
+네트워크 서로간의 정보를 주고받으려면 주소값이 있어야한다. 이게바로 ip
+0.0.0.0
+옥텟 구분자(.)
+network ip, host ip
+network ip 는 고유함 왜 인터넷이기때문에
+cloud에서 public ip를 자동으로 할당을 해주는데 이게 인터넷을 연결해주기때문에 요금을 받는다.
+vnet 안에서 서로 통신할수있게 해주는 ip은 ㄴprivate ip
+
+ipv4 255.255.255.255 
+8bit 
+지금은 ipv6를 사용하고있음.
+
+1.1.1.0/24 는 앞에 8,8,8을 1로 마킹하여 앞의 24개비트를 네트워크 ip로하고, 나머진 host ip로 한다.
