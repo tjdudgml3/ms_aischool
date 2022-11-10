@@ -1,0 +1,8 @@
+C:\Users\tjdudgml3\source\repos\CRUD_Sample1\CRUD_Sample1\obj\Debug\CRUD_Sample1.csproj.AssemblyReference.cache
+C:\Users\tjdudgml3\source\repos\CRUD_Sample1\CRUD_Sample1\obj\Debug\CRUD_Sample1.csproj.SuggestedBindingRedirects.cache
+C:\Users\tjdudgml3\source\repos\CRUD_Sample1\CRUD_Sample1\obj\Debug\CRUD_Sample1.csproj.CoreCompileInputs.cache
+C:\Users\tjdudgml3\source\repos\CRUD_Sample1\CRUD_Sample1\bin\Debug\CRUD_Sample1.exe.config
+C:\Users\tjdudgml3\source\repos\CRUD_Sample1\CRUD_Sample1\bin\Debug\CRUD_Sample1.exe
+C:\Users\tjdudgml3\source\repos\CRUD_Sample1\CRUD_Sample1\bin\Debug\CRUD_Sample1.pdb
+C:\Users\tjdudgml3\source\repos\CRUD_Sample1\CRUD_Sample1\obj\Debug\CRUD_Sample1.exe
+C:\Users\tjdudgml3\source\repos\CRUD_Sample1\CRUD_Sample1\obj\Debug\CRUD_Sample1.pdb

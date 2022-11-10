@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "8aIoAcM/vnZDJ18VdYlai8nYJbV1/U0mAvNEz8f1SwZ0NmaHYON7jVku/odI1GzhjELv4MRn7LGjRRYjyvq4Og==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tjdudgml3\\source\\repos\\CRUD_Sample1\\CRUDForm1\\CRUDForm1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tjdudgml3\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\tjdudgml3\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\tjdudgml3\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\tjdudgml3\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}
