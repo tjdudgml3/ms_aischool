@@ -50,6 +50,7 @@
             this.bntInsert.TabIndex = 1;
             this.bntInsert.Text = "Insert Items";
             this.bntInsert.UseVisualStyleBackColor = true;
+            this.bntInsert.Click += new System.EventHandler(this.bntInsert_Click);
             // 
             // bntExit
             // 

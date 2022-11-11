@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using System.Data.SqlClient;
 using System.Collections;
+using System.Configuration;
 /*
  CREATE TABLE dbo.VIPmembers{
     member_id int IDENTITY(1,1),
@@ -28,7 +29,8 @@ namespace SQLServer01
 
     public partial class frmMain : Form
     {
-        private const string CONNECTIONSTRING = "Server=tcp:labuser71sqlserver.database.windows.net,1433;Initial Catalog=labuser71sql;Persist Security Info=False;User ID=tjdudgml3;Password=tjdudgml123!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+        private string CONNECTIONSTRING = ConfigurationManager.AppSettings["connection_string"]; 
         private SqlConnection Sqlcon = null;
         private SqlCommand SqlCmd = null;
         private SqlDataAdapter SqlApt = new SqlDataAdapter();

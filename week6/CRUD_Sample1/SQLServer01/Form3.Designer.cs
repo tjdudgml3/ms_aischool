@@ -1,6 +1,6 @@
 ﻿namespace SQLServer01
 {
-    partial class Form3
+    partial class frmInsert
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             this.lbEmail = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textName = new System.Windows.Forms.TextBox();
-            this.testEmail = new System.Windows.Forms.TextBox();
+            this.textEmail = new System.Windows.Forms.TextBox();
             this.textPhone = new System.Windows.Forms.TextBox();
             this.bntInsert = new System.Windows.Forms.Button();
             this.bntCancel = new System.Windows.Forms.Button();
@@ -72,12 +72,12 @@
             this.textName.Size = new System.Drawing.Size(100, 20);
             this.textName.TabIndex = 3;
             // 
-            // testEmail
+            // textEmail
             // 
-            this.testEmail.Location = new System.Drawing.Point(99, 91);
-            this.testEmail.Name = "testEmail";
-            this.testEmail.Size = new System.Drawing.Size(100, 20);
-            this.testEmail.TabIndex = 4;
+            this.textEmail.Location = new System.Drawing.Point(99, 91);
+            this.textEmail.Name = "textEmail";
+            this.textEmail.Size = new System.Drawing.Size(100, 20);
+            this.textEmail.TabIndex = 4;
             // 
             // textPhone
             // 
@@ -94,6 +94,7 @@
             this.bntInsert.TabIndex = 6;
             this.bntInsert.Text = "Insert";
             this.bntInsert.UseVisualStyleBackColor = true;
+            this.bntInsert.Click += new System.EventHandler(this.bntInsert_Click);
             // 
             // bntCancel
             // 
@@ -103,8 +104,9 @@
             this.bntCancel.TabIndex = 7;
             this.bntCancel.Text = "Cancel";
             this.bntCancel.UseVisualStyleBackColor = true;
+            this.bntCancel.Click += new System.EventHandler(this.bntCancel_Click);
             // 
-            // Form3
+            // frmInsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -112,12 +114,12 @@
             this.Controls.Add(this.bntCancel);
             this.Controls.Add(this.bntInsert);
             this.Controls.Add(this.textPhone);
-            this.Controls.Add(this.testEmail);
+            this.Controls.Add(this.textEmail);
             this.Controls.Add(this.textName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbEmail);
             this.Controls.Add(this.lbName);
-            this.Name = "Form3";
+            this.Name = "frmInsert";
             this.Text = "Form3";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -130,7 +132,7 @@
         private System.Windows.Forms.Label lbEmail;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textName;
-        private System.Windows.Forms.TextBox testEmail;
+        private System.Windows.Forms.TextBox textEmail;
         private System.Windows.Forms.TextBox textPhone;
         private System.Windows.Forms.Button bntInsert;
         private System.Windows.Forms.Button bntCancel;

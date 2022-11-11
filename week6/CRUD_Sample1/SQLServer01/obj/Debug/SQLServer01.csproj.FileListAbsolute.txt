@@ -10,3 +10,4 @@ C:\Users\tjdudgml3\source\repos\CRUD_Sample1\SQLServer01\obj\Debug\SQLServer01.c
 C:\Users\tjdudgml3\source\repos\CRUD_Sample1\SQLServer01\obj\Debug\SQLServer01.exe
 C:\Users\tjdudgml3\source\repos\CRUD_Sample1\SQLServer01\obj\Debug\SQLServer01.pdb
 C:\Users\tjdudgml3\source\repos\CRUD_Sample1\SQLServer01\obj\Debug\SQLServer01.frmVIP.resources
+C:\Users\tjdudgml3\source\repos\CRUD_Sample1\SQLServer01\obj\Debug\SQLServer01.frmInsert.resources

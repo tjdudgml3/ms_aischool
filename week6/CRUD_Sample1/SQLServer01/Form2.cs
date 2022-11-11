@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace SQLServer01
 {
     public partial class frmVIP : Form
     {
-        private const string CONNECTIONSTRING = "Server=tcp:labuser71sqlserver.database.windows.net,1433;Initial Catalog=labuser71sql;Persist Security Info=False;User ID=tjdudgml3;Password=tjdudgml123!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private string CONNECTIONSTRING = ConfigurationManager.AppSettings["connection_string"]; 
         private SqlConnection Sqlcon = null;
         private SqlCommand SqlCmd = null;
         private SqlDataAdapter SqlApt = new SqlDataAdapter();
@@ -23,8 +23,35 @@ namespace SQLServer01
         public frmVIP()
         {
             InitializeComponent();
-            
+            ReloadData();
 
+
+
+        }
+
+        private void bntExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmVIP_Load(object sender, EventArgs e)
+        {
+            
+            /*Sqlcon = new SqlConnection(CONNECTIONSTRING);
+            DataSet dataProducts = new DataSet();
+            string query = "SELECT * FROM dbo.VIPmembers";
+
+            SqlCommand cmd = Sqlcon.CreateCommand();
+            //cmd.Parameters.Add(new SqlParameter("@brand_id", selectedBrandID));
+            cmd.CommandText = query;
+            SqlApt.SelectCommand = cmd;
+            SqlApt.Fill(dataProducts);
+            gridMemberLsit.DataSource = dataProducts.Tables[0];*/
+        }
+
+        public void ReloadData()
+        {
+            dataMain.Clear();
             Sqlcon = new SqlConnection(CONNECTIONSTRING);
             DataSet dataVIP = new DataSet();
             string query = "SELECT * FROM dbo.VIPmembers";
@@ -37,23 +64,12 @@ namespace SQLServer01
             gridMemberLsit.DataSource = dataVIP.Tables[0];
         }
 
-        private void bntExit_Click(object sender, EventArgs e)
+        private void bntInsert_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
+            frmInsert frmInsert= new frmInsert(this);
+            
+            frmInsert.ShowDialog();
 
-        private void frmVIP_Load(object sender, EventArgs e)
-        {
-            /*Sqlcon = new SqlConnection(CONNECTIONSTRING);
-            DataSet dataProducts = new DataSet();
-            string query = "SELECT * FROM dbo.VIPmembers";
-
-            SqlCommand cmd = Sqlcon.CreateCommand();
-            //cmd.Parameters.Add(new SqlParameter("@brand_id", selectedBrandID));
-            cmd.CommandText = query;
-            SqlApt.SelectCommand = cmd;
-            SqlApt.Fill(dataProducts);
-            gridMemberLsit.DataSource = dataProducts.Tables[0];*/
         }
     }
 }
