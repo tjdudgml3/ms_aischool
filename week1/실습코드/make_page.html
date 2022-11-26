@@ -8,7 +8,8 @@
     rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="myhompage.js"></script>
     <title>Document</title>
     <style>
         #main_introduce{
@@ -65,14 +66,26 @@
     <div class="container main">
         <div class="row">
             <div class="col md-6">
-                <h1>안녕하세요. 인공지능 개발자, 데이터 분석가를 꿈꾸는 서영희입니다.</h1> 
+                <h4>안녕하세요. 인공지능 개발자, 데이터 분석가를 꿈꾸는 서영희입니다.</h4>
+                <a href="http://www.github.com/tjdudgml3">github link 바로가기</a> 
             </div>
             <div class="col md - 6">
                 <p id = "main_introduce">
                     홍익 대학교 컴퓨터 공학과 졸업<p></p>
-                    선형대수학, ML, D <p></p>
-                    Opic IH <p></p>
-                    WonderfulPlatform chatbot team intern 2020.6~2020.8
+                    MS AI school <p></p>
+
+                    WonderfulPlatform chatbot team intern 2020.6~2020.8 <p></p>
+                    <div class="dropdown">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Certificates
+                      </a>
+                    
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Opic IH</a></li>
+                        <li><a class="dropdown-item" href="#">Microsoft AI900</a></li>
+                        <li><a class="dropdown-item" href="#">Microsoft DP900</a></li>
+                      </ul>
+                    </div>
                 </p>    
                 
                 
@@ -87,7 +100,7 @@
             <div class="card-body">
               <h5 class="card-title">ImagePicker</h5>
               <p class="card-text">졸업 프로젝트로 앨범안의 이미지를 분류해주는 어플 개발.</p>
-              <a href="#" class="btn btn-primary">See Contents</a>
+              <a href="#" class="btn btn-primary" id="contents_ImagePicker">See Contents</a>
             </div>
           </div>
         </div>
@@ -96,7 +109,7 @@
             <div class="card-body">
               <h5 class="card-title">토이 프로젝트들</h5>
               <p class="card-text">토이 프로젝트로 인공지능, 머신러닝 프로젝트들</p>
-              <a href="#" class="btn btn-primary">See Contents</a>
+              <a href="#" class="btn btn-primary" id="contents_toy">See Contents</a>
             </div>
           </div>
         </div>
@@ -105,23 +118,29 @@
               <div class="card-body">
                 <h5 class="card-title">MS AI SCHOOL</h5>
                 <p class="card-text">MS AI SCHOOL 에서 배운내용. AZURE, DL, ML</p>
-                <a href="#" class="btn btn-primary">See Contents</a>
+                <a href="#" class="btn btn-primary" id="contents_MS_AI_school">See Contents</a>
               </div>
             </div>
           </div>
       </div>
     <div class="container main">
+        
         <div class="row">
-            <div class="col md-4">
-                <h1>MS Aischool</h1> 
+            <div class="col md-6">
+              <h2>Stacks</h2> <p></p>
+              <ul>
+                <li>Python</li>
+                <li>Machine learning&Deep learning</li>
+                <li>Data Handling</li>
+                <li>Azure cloud computing</li>
+                <li>Database engineering</li>
+              </ul>
+              
             </div>
-            <div class="col md-4">
-                <h1>Opic IH</h1> 
-            </div>
-            <div class="col md-4">
-                <h1>원더풀플랫폼 인턴</h1> 
-            </div>
-                       
+            <div class="col md-6">
+                <h4>방명록을 남겨주세요!</h4> <p></p>
+                 <a href="">방명록 남기로가기</a>
+            </div>           
         </div>
     </div>
 </body>
