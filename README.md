@@ -9,5 +9,6 @@ week4 - machine learning by sklearn and deep learning
 week5 - deep learning by keras and Azure docker, Kubernetes, VM/Vnet in azure   
 week6 - azure data storage, CRUD demo using C#  
 week7 - data preprocessing using pandas&matplotlib, probability&statistics  
-week8 - regression, classification, object detection
-week9 - data labeling, image agumentation
+week8 - regression, classification, object detection   
+week9 - data labeling, image agumentation   
+week10 - deeplearning, CNN
